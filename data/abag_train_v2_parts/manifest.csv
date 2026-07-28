@@ -1,0 +1,6 @@
+part,filename,n_rows,n_targets,target_min,target_max
+1,abag_train_v2_part01.csv,54987,1275,1a14,4pgj
+2,abag_train_v2_part02.csv,54973,1171,4pir,6ion
+3,abag_train_v2_part03.csv,55000,1198,6ir1,7f9w
+4,abag_train_v2_part04.csv,54963,1210,7f9y,7vvj
+5,abag_train_v2_part05.csv,49182,2191,7vvk,9jbq

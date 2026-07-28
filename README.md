@@ -48,7 +48,7 @@ Locked per-model prediction exports used to regenerate the final paper figures a
 `data/report_data_v3.json`
 Single-source summary of the locked paper results.
 
-`abag_train_v2.csv` is intentionally not included in this public release because it is 277 MB and exceeds normal GitHub file limits. The public reproduction scripts therefore use the locked prediction exports rather than refitting models from raw training rows.
+The Ab-Ag training set is included in split form under `data/abag_train_v2_parts/` because the unsplit CSV is 277 MB and exceeds GitHub's per-file limit. Use `scripts/merge_abag_train_parts.py` if you need a single file locally. The public reproduction scripts still use the locked prediction exports rather than refitting from raw training rows.
 
 ## Models
 
@@ -106,8 +106,8 @@ The reproduction scripts generate public rederived artifacts alongside those loc
 `scripts/reproduce_figure1.py`
 `scripts/reproduce_figure2.py`
 `scripts/reproduce_figure3.py`
+`scripts/merge_abag_train_parts.py`
 
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
