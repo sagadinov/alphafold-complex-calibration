@@ -1,0 +1,39 @@
+\begin{table}[t]
+\caption{General multimer calibration and classification results (5{,}496 models, 1{,}922 targets). All fitted methods use grouped 5-fold AFM-benchmark evaluation. pDockQ2 (published) uses original parameters from \citet{zhu2023evaluation}; pDockQ2 (refit) uses parameters optimized on AFM-benchmark training data. Best per column in \textbf{bold}.}
+\label{tab:general_revision_v2}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Method & Brier$\downarrow$ & ECE$\downarrow$ & AUROC$\uparrow$ & MCC$\uparrow$ & PPV$\uparrow$ \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.23 --- $n_+$\!=\!3,219, $n_-$\!=\!2,277}} \\
+Raw ipTM & .1379 & .0774 & .891 & .609 & .800 \\
+Raw ranking confidence & .1423 & .0864 & .889 & .597 & .786 \\
+Raw pDockQ2 (published) & .2148 & .1990 & .827 & .450 & .856 \\
+Raw pDockQ2 (refit) & .2056 & .1914 & .826 & .442 & \textbf{.856} \\
+Isotonic ipTM & .1307 & .0195 & .884 & .618 & .841 \\
+Isotonic iPAE & .1781 & \textbf{.0082} & .764 & .473 & .725 \\
+MLP 5-feat CE & \textbf{.1258} & .0142 & \textbf{.895} & \textbf{.641} & .844 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.49 --- $n_+$\!=\!2,382, $n_-$\!=\!3,114}} \\
+Raw ipTM & .1728 & .1957 & .913 & .583 & .639 \\
+Raw ranking confidence & .1806 & .2080 & .912 & .559 & .622 \\
+Raw pDockQ2 (published) & .1645 & .0506 & .843 & .508 & .740 \\
+Raw pDockQ2 (refit) & .1680 & .0639 & .842 & .507 & .745 \\
+Isotonic ipTM & .1186 & \textbf{.0086} & .907 & .667 & .771 \\
+Isotonic iPAE & .1822 & .0120 & .774 & .446 & .643 \\
+MLP 5-feat CE & \textbf{.1161} & .0123 & \textbf{.913} & \textbf{.676} & \textbf{.796} \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.80 --- $n_+$\!=\!1,002, $n_-$\!=\!4,494}} \\
+Raw ipTM & .3224 & .4428 & .876 & .330 & .273 \\
+Raw ranking confidence & .3313 & .4557 & .875 & .316 & .265 \\
+Raw pDockQ2 (published) & .1781 & .2044 & .838 & .407 & .373 \\
+Raw pDockQ2 (refit) & .1697 & .2191 & .837 & .412 & .380 \\
+Isotonic ipTM & .1055 & \textbf{.0118} & .869 & \textbf{.437} & .600 \\
+Isotonic iPAE & .1264 & .0181 & .780 & .000 & .000 \\
+MLP 5-feat CE & \textbf{.1046} & .0150 & \textbf{.876} & .414 & \textbf{.610} \\
+\bottomrule
+\end{tabular}
+}%
+\end{table}

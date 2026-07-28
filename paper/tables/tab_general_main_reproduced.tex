@@ -1,0 +1,37 @@
+\begin{table}[t]
+\centering
+\caption{Reproduced General multimer evaluation from locked out-of-fold predictions.}
+\label{tab:general_reproduced}
+\begin{tabular}{lccccc}
+\toprule
+Method & Brier & ECE & AUROC & MCC & PPV \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\geq$ 0.23}} \\
+Raw ipTM & 0.1379 & 0.0774 & 0.8909 & 0.6093 & 0.7995 \\
+Raw ranking conf. & 0.1423 & 0.0864 & 0.8889 & 0.5972 & 0.7861 \\
+Raw iPAE proxy & 0.3675 & 0.4227 & 0.7357 & -0.2583 & 0.0748 \\
+pDockQ2 (published) & 0.2148 & 0.1990 & 0.8268 & 0.4501 & 0.8555 \\
+Iso. ipTM & 0.1307 & 0.0195 & 0.8841 & 0.6185 & 0.8411 \\
+Iso. iPAE & 0.1781 & 0.0082 & 0.7636 & 0.4726 & 0.7249 \\
+MLP 5-feat CE & 0.1258 & 0.0142 & 0.8953 & 0.6408 & 0.8437 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\geq$ 0.49}} \\
+Raw ipTM & 0.1728 & 0.1957 & 0.9129 & 0.5826 & 0.6391 \\
+Raw ranking conf. & 0.1806 & 0.2080 & 0.9117 & 0.5595 & 0.6223 \\
+Raw iPAE proxy & 0.2820 & 0.2731 & 0.7603 & -0.1865 & 0.0623 \\
+pDockQ2 (published) & 0.1645 & 0.0506 & 0.8427 & 0.5083 & 0.7400 \\
+Iso. ipTM & 0.1186 & 0.0086 & 0.9069 & 0.6674 & 0.7711 \\
+Iso. iPAE & 0.1822 & 0.0120 & 0.7737 & 0.4460 & 0.6427 \\
+MLP 5-feat CE & 0.1161 & 0.0123 & 0.9130 & 0.6755 & 0.7957 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\geq$ 0.80}} \\
+Raw ipTM & 0.3224 & 0.4428 & 0.8756 & 0.3304 & 0.2732 \\
+Raw ranking conf. & 0.3313 & 0.4557 & 0.8754 & 0.3156 & 0.2653 \\
+Raw iPAE proxy & 0.1747 & 0.1132 & 0.7738 & -0.0834 & 0.0530 \\
+pDockQ2 (published) & 0.1781 & 0.2044 & 0.8383 & 0.4066 & 0.3734 \\
+Iso. ipTM & 0.1055 & 0.0118 & 0.8686 & 0.4367 & 0.6000 \\
+Iso. iPAE & 0.1264 & 0.0181 & 0.7797 & 0.0000 & 0.0000 \\
+MLP 5-feat CE & 0.1046 & 0.0150 & 0.8758 & 0.4139 & 0.6098 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,5 @@
+dataset,feature,role,display_name,pearson_drop_mean,pearson_drop_std,baseline_pearson,n_repeats,n_rows
+general,iptm,iptm,iPTM,0.6346144088207587,0.01021518934433297,0.7805552070004643,20,5496
+general,iface_pae_mean,interface_pae,Interface PAE,0.08600716211497786,0.004856394481015626,0.7805552070004643,20,5496
+general,interchain_block_mean,interchain_block,Interchain block,0.04088568116304651,0.0020476932452718585,0.7805552070004643,20,5496
+general,ptm,ptm,pTM,0.018081173326413243,0.0016686559920240335,0.7805552070004643,20,5496

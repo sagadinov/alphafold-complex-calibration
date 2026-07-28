@@ -1,0 +1,44 @@
+\begin{table}[t]
+\caption{Ab-Ag calibration and classification results (62,681 evaluated models, 1,257 targets; 65,650 raw models total). All methods fitted on the Ab-Ag training split. Models with missing DockQ or required confidence features (n=2,969) were excluded from evaluation. pDockQ2 (published) uses original parameters from Zhu et al.; pDockQ2 (refit) uses parameters optimized on our training data. ABAG-Rank is evaluated on Matteo's test split, which overlaps our test split by 983 targets. Best per column in \textbf{bold}.}
+\label{tab:abag_revision}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Method & Brier$\downarrow$ & ECE$\downarrow$ & AUROC$\uparrow$ & MCC$\uparrow$ & PPV$\uparrow$ \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.23 --- $n_+$\!=\!22,231, $n_-$\!=\!40,450}} \\
+Raw ipTM & .1213 & .1462 & .927 & .722 & .778 \\
+Raw ranking confidence & .1478 & .1944 & .926 & .682 & .712 \\
+Raw pDockQ2 (published) & .1583 & .1929 & .943 & .558 & \textbf{.951} \\
+Raw pDockQ2 (refit) & .1006 & .0969 & .943 & .736 & .924 \\
+ABAG-Rank$^\dagger$ & --- & --- & .895 & .686 & .867 \\
+Iso. ipTM & .0929 & .0282 & .926 & .742 & .855 \\
+Iso. iPAE & .0826 & .0255 & .944 & .764 & .862 \\
+MLP 5-feat CE & \textbf{.0783} & \textbf{.0150} & \textbf{.946} & \textbf{.773} & .867 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.49 --- $n_+$\!=\!18,029, $n_-$\!=\!44,652}} \\
+Raw ipTM & .1327 & .1907 & .938 & .696 & .674 \\
+Raw ranking confidence & .1661 & .2563 & .936 & .643 & .606 \\
+Raw pDockQ2 (published) & .1147 & .1260 & .949 & .594 & \textbf{.888} \\
+Raw pDockQ2 (refit) & .0814 & .0725 & .949 & .766 & .848 \\
+ABAG-Rank$^\dagger$ & --- & --- & .912 & .685 & .848 \\
+Iso. ipTM & .0821 & .0143 & .938 & .739 & .790 \\
+Iso. iPAE & .0726 & .0155 & .950 & .771 & .846 \\
+MLP 5-feat CE & \textbf{.0639} & \textbf{.0110} & \textbf{.960} & \textbf{.797} & .866 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.80 --- $n_+$\!=\!9,070, $n_-$\!=\!53,611}} \\
+Raw ipTM & .2032 & .3336 & .932 & .497 & .359 \\
+Raw ranking confidence & .2461 & .3992 & .928 & .446 & .316 \\
+Raw pDockQ2 (published) & .0730 & .0284 & .933 & .579 & .600 \\
+Raw pDockQ2 (refit) & .0971 & .1306 & .933 & .598 & .485 \\
+ABAG-Rank$^\dagger$ & --- & --- & .879 & .092 & .523 \\
+Iso. ipTM & .0716 & .0133 & .933 & .599 & .610 \\
+Iso. iPAE & .0700 & \textbf{.0092} & .937 & .572 & .610 \\
+MLP 5-feat CE & \textbf{.0629} & .0154 & \textbf{.949} & \textbf{.641} & \textbf{.653} \\
+\bottomrule
+\end{tabular}
+}%
+\vspace{2pt}
+{\footnotesize $^\dagger$ABAG-Rank is evaluated on Matteo's test split (25{,}440 models, 1{,}091 targets), which overlaps our test split by 983 targets. Brier and ECE are not reported because its output is continuous DockQ rather than calibrated probability.}
+\end{table}

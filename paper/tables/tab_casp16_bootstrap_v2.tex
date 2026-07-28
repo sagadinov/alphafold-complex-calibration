@@ -1,0 +1,39 @@
+\begin{table}[t]
+\caption{CASP16 external calibration and classification results summarized by target-balanced bootstrap (100 iterations, 100 models per target, minimum 100 models per target, seed 42). All fitted methods are trained on AFM-benchmark and applied frozen to CASP16. H1265 was excluded because DockQ v2 chain-mapping optimization did not converge within computational limits; H1217 and H1258 were excluded from bootstrap because they contain fewer than 100 scored models. pDockQ2 (published) uses original parameters; pDockQ2 (refit) uses AFM-benchmark refit parameters. Best mean per column in \textbf{bold}. Values are reported as mean$\pm$std.}
+\label{tab:casp16_revision}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Method & Brier$\downarrow$ & ECE$\downarrow$ & AUROC$\uparrow$ & MCC$\uparrow$ & PPV$\uparrow$ \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.23}} \\
+Raw ipTM & .1609$\pm$.0339 & .1255$\pm$.0471 & .8484$\pm$.0563 & .5053$\pm$.0967 & .7360$\pm$.0853 \\
+Raw ranking confidence & .1651$\pm$.0356 & .1326$\pm$.0493 & .8468$\pm$.0564 & .4744$\pm$.1077 & .7230$\pm$.0894 \\
+Raw pDockQ2 (published) & .2633$\pm$.0495 & .3290$\pm$.0590 & \textbf{.8801$\pm$.0527} & .4401$\pm$.0968 & .9893$\pm$.0131 \\
+Raw pDockQ2 (refit) & .2351$\pm$.0366 & .2872$\pm$.0588 & \textbf{.8801$\pm$.0527} & .4302$\pm$.0984 & \textbf{.9895$\pm$.0151} \\
+Iso. ipTM & .1528$\pm$.0353 & .1021$\pm$.0405 & .8521$\pm$.0521 & .5641$\pm$.0939 & .7774$\pm$.0757 \\
+Iso. iPAE & .1641$\pm$.0303 & .1558$\pm$.0460 & .8701$\pm$.0549 & .5701$\pm$.1265 & .8398$\pm$.0748 \\
+MLP 5-feat CE & \textbf{.1333$\pm$.0355} & \textbf{.0873$\pm$.0292} & .8778$\pm$.0558 & \textbf{.6123$\pm$.1118} & .8274$\pm$.0706 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.49}} \\
+Raw ipTM & .3336$\pm$.0534 & .4367$\pm$.0739 & .8762$\pm$.0587 & .3024$\pm$.0779 & .3259$\pm$.1124 \\
+Raw ranking confidence & .3435$\pm$.0541 & .4459$\pm$.0749 & .8705$\pm$.0626 & .2886$\pm$.0777 & .3199$\pm$.1116 \\
+Raw pDockQ2 (published) & \textbf{.1089$\pm$.0235} & \textbf{.0898$\pm$.0323} & .8929$\pm$.0468 & .6072$\pm$.1458 & .7185$\pm$.1705 \\
+Raw pDockQ2 (refit) & .1223$\pm$.0199 & .1543$\pm$.0329 & .8929$\pm$.0468 & .6026$\pm$.1503 & \textbf{.7260$\pm$.1761} \\
+Iso. ipTM & .2062$\pm$.0418 & .2574$\pm$.0685 & .8747$\pm$.0580 & .4318$\pm$.1023 & .3995$\pm$.1303 \\
+Iso. iPAE & .1132$\pm$.0186 & .1123$\pm$.0313 & .8965$\pm$.0430 & \textbf{.6472$\pm$.1158} & .7055$\pm$.1469 \\
+MLP 5-feat CE & .1620$\pm$.0381 & .2118$\pm$.0557 & \textbf{.9242$\pm$.0391} & .5212$\pm$.1222 & .4749$\pm$.1482 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\ge$ 0.80}} \\
+Raw ipTM & .4604$\pm$.0418 & .6025$\pm$.0442 & .8214$\pm$.0979 & .1514$\pm$.0572 & .1065$\pm$.0584 \\
+Raw ranking confidence & .4708$\pm$.0416 & .6129$\pm$.0442 & .8153$\pm$.1031 & .1448$\pm$.0563 & .1046$\pm$.0577 \\
+Raw pDockQ2 (published) & .1239$\pm$.0410 & .1945$\pm$.0410 & .8968$\pm$.0608 & .4687$\pm$.1478 & .3154$\pm$.1449 \\
+Raw pDockQ2 (refit) & .1281$\pm$.0289 & .2463$\pm$.0316 & .8968$\pm$.0608 & \textbf{.4709$\pm$.1514} & \textbf{.3229$\pm$.1497} \\
+Iso. ipTM & .1026$\pm$.0366 & .1456$\pm$.0381 & .8185$\pm$.0975 & .1138$\pm$.1663 & .1636$\pm$.1465 \\
+Iso. iPAE & \textbf{.0598$\pm$.0260} & \textbf{.0543$\pm$.0183} & \textbf{.8989$\pm$.0505} & .0000$\pm$.0000 & .0000$\pm$.0000 \\
+MLP 5-feat CE & .0731$\pm$.0297 & .1176$\pm$.0343 & .8938$\pm$.0633 & .2059$\pm$.1536 & .3194$\pm$.2684 \\
+\bottomrule
+\end{tabular}
+}%
+\end{table}
