@@ -8,6 +8,12 @@ from matplotlib.patches import Patch
 
 from scripts.common import ANALYSIS, PAPER_FIG
 
+PDF_METADATA = {
+    "Creator": "alphafold-complex-calibration",
+    "CreationDate": None,
+    "ModDate": None,
+}
+
 TP_COLOR = "#059669"
 FP_COLOR = "#F97316"
 FAILED_GENERAL = {"Raw iPAE (1/(1+iPAE))", "Iso. iPAE"}
@@ -87,11 +93,10 @@ def main() -> None:
     fig.text(0.5, 0.095, "Dashed lines mark total positives: Ab-Ag = 22,231; General = 3,219.", ha="center", va="center", fontsize=9)
     fig.suptitle("Matched-precision retrieval at DockQ >= 0.23", fontsize=13, y=1.02)
     fig.tight_layout(rect=[0, 0.14, 1, 1])
-    fig.savefig(PAPER_FIG / "F2_matched_precision_bars.pdf", bbox_inches="tight")
+    fig.savefig(PAPER_FIG / "F2_matched_precision_bars.pdf", bbox_inches="tight", metadata=PDF_METADATA)
     fig.savefig(PAPER_FIG / "F2_matched_precision_bars.png", bbox_inches="tight", dpi=300)
     print("Saved F2_matched_precision_bars.pdf/.png")
 
 
 if __name__ == "__main__":
     main()
-

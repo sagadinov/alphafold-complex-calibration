@@ -5,9 +5,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -154,4 +151,3 @@ def load_report() -> dict:
 def base_axes_style(ax, title: str) -> None:
     ax.set_title(title, fontsize=12)
     ax.grid(True, alpha=0.12)
-

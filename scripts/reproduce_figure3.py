@@ -7,6 +7,12 @@ import pandas as pd
 
 from scripts.common import ANALYSIS, PAPER_FIG
 
+PDF_METADATA = {
+    "Creator": "alphafold-complex-calibration",
+    "CreationDate": None,
+    "ModDate": None,
+}
+
 
 def draw(ax, df: pd.DataFrame, title: str) -> None:
     df = df.sort_values("pearson_drop_mean", ascending=True)
@@ -23,11 +29,10 @@ def main() -> None:
     draw(axes[0], abag, "Ab-Ag")
     draw(axes[1], general, "General")
     fig.tight_layout()
-    fig.savefig(PAPER_FIG / "F3_permutation_importance.pdf", bbox_inches="tight")
+    fig.savefig(PAPER_FIG / "F3_permutation_importance.pdf", bbox_inches="tight", metadata=PDF_METADATA)
     fig.savefig(PAPER_FIG / "F3_permutation_importance.png", bbox_inches="tight", dpi=300)
     print("Saved F3_permutation_importance.pdf/.png")
 
 
 if __name__ == "__main__":
     main()
-

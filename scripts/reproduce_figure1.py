@@ -7,6 +7,12 @@ import matplotlib.pyplot as plt
 
 from scripts.common import PAPER_FIG, THRESHOLDS, base_axes_style, load_predictions
 
+PDF_METADATA = {
+    "Creator": "alphafold-complex-calibration",
+    "CreationDate": None,
+    "ModDate": None,
+}
+
 METHODS = {
     "Raw ipTM": ("p_raw_iptm", "#9CA3AF", "--"),
     "Iso. ipTM": {
@@ -62,11 +68,10 @@ def main() -> None:
         base_axes_style(ax, f"DockQ >= {thr_val:.2f}")
         ax.legend(fontsize=7, loc="upper left")
     fig.tight_layout()
-    fig.savefig(PAPER_FIG / "F1_reliability_abag.pdf", bbox_inches="tight")
+    fig.savefig(PAPER_FIG / "F1_reliability_abag.pdf", bbox_inches="tight", metadata=PDF_METADATA)
     fig.savefig(PAPER_FIG / "F1_reliability_abag.png", bbox_inches="tight", dpi=300)
     print("Saved F1_reliability_abag.pdf/.png")
 
 
 if __name__ == "__main__":
     main()
-
