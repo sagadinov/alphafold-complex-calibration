@@ -16,9 +16,8 @@ Positive means an experimentally validated complex is available in PDB.
 - 4 archive entries were missing expected members and were excluded from recomputed-feature methods.
 - 679 / 687 extracted entries have finite interface iPAE; 8 have zero predicted cross-chain contacts within 8A.
 - Mapping/provenance: `bulk_tar_mapping.csv` and `bulk_extraction_manifest.csv`.
-- Raw CIF + PAE files remain on Berzelius at:
-  `/proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/analysis/afdb_models/`
-- Raw files are not committed to GitHub.
+- Raw CIF + PAE files used for these derived features are not redistributed in this repository.
+- Public release reproduces the AFDB comparison from the locked derived feature/result tables only.
 
 ## Evaluations
 

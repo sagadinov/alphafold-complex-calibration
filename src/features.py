@@ -1,23 +1,74 @@
-"""Feature computation utilities for raw structure and PAE arrays."""
+"""Feature computation helpers for pre-extracted coordinate and PAE arrays.
+
+These routines implement the release v2 feature definitions used for the public
+models:
+
+- `iface_pae_mean`: mean PAE over ordered cross-chain residue pairs whose
+  predicted C-beta distance is below 8 A
+- `interchain_block_mean`: mean PAE over all ordered cross-chain residue pairs
+
+The helpers operate on arrays that have already been aligned to the PAE matrix.
+They do not parse complete AlphaFold output directories.
+"""
 
 from __future__ import annotations
 
 import numpy as np
-from scipy.spatial.distance import cdist
-
 IPAE_CUTOFF = 8.0
 
 
 def virtual_cb(n: np.ndarray, ca: np.ndarray, c: np.ndarray) -> np.ndarray:
-    """Construct a virtual Cbeta coordinate for glycine from the backbone frame."""
+    """Construct the glycine virtual C-beta used in the locked v2 pipeline."""
 
-    v1 = c - ca
-    v1 = v1 / np.linalg.norm(v1)
-    v2 = n - ca
-    v2 = v2 - np.dot(v2, v1) * v1
-    v2 = v2 / np.linalg.norm(v2)
-    v3 = np.cross(v1, v2)
-    return ca + (-0.5416 * v1 + -0.7700 * v2 + -1.2065 * v3)
+    b = ca - n
+    cvec = c - ca
+    a = np.cross(b, cvec)
+    return ca + (-0.58273431 * b + 0.56802827 * cvec + 0.54067466 * a)
+
+
+def compute_interchain_block_mean(pae_matrix: np.ndarray, chain_ids: list[str] | np.ndarray) -> float:
+    """Return the mean PAE over all ordered cross-chain residue pairs."""
+
+    pae = np.asarray(pae_matrix, dtype=float)
+    chains = np.asarray(chain_ids)
+    if pae.ndim != 2 or pae.shape[0] != pae.shape[1]:
+        raise ValueError(f"expected a square PAE matrix, got shape {pae.shape}")
+    if len(chains) != pae.shape[0]:
+        raise ValueError(f"chain_ids length {len(chains)} does not match PAE size {pae.shape[0]}")
+    cross_chain = chains[:, None] != chains[None, :]
+    vals = pae[cross_chain]
+    return float(np.mean(vals)) if vals.size else float("nan")
+
+
+def compute_ipae_8A_with_count(
+    pae_matrix: np.ndarray,
+    cb_coords: np.ndarray,
+    chain_ids: list[str] | np.ndarray,
+    cutoff_A: float = IPAE_CUTOFF,
+) -> tuple[float, int]:
+    """Return release-v2 iPAE and the number of ordered interface pairs.
+
+    Ordered residue pairs are counted the same way as in the frozen manuscript
+    pipeline: if residues i and j are cross-chain contacts, both (i, j) and
+    (j, i) contribute.
+    """
+
+    pae = np.asarray(pae_matrix, dtype=float)
+    coords = np.asarray(cb_coords, dtype=float)
+    chains = np.asarray(chain_ids)
+    if pae.ndim != 2 or pae.shape[0] != pae.shape[1]:
+        raise ValueError(f"expected a square PAE matrix, got shape {pae.shape}")
+    if coords.ndim != 2 or coords.shape[1] != 3:
+        raise ValueError(f"expected coordinates with shape (N, 3), got {coords.shape}")
+    if len(coords) != pae.shape[0] or len(chains) != pae.shape[0]:
+        raise ValueError(
+            f"dimension mismatch: coords={len(coords)} chains={len(chains)} pae={pae.shape[0]}"
+        )
+    dist = np.sqrt(np.sum((coords[:, None, :] - coords[None, :, :]) ** 2, axis=2))
+    cross_chain = chains[:, None] != chains[None, :]
+    iface_mask = cross_chain & (dist < cutoff_A)
+    iface_vals = pae[iface_mask]
+    return (float(np.mean(iface_vals)) if iface_vals.size else float("nan"), int(iface_mask.sum()))
 
 
 def compute_interface_features(
@@ -25,25 +76,17 @@ def compute_interface_features(
     pae_matrix: np.ndarray,
     chain_ids: list[str] | np.ndarray,
 ) -> dict[str, float]:
-    """Compute iPAE-style summary features from coordinates and a PAE matrix."""
+    """Compute release-v2 interface features from aligned arrays."""
 
-    chain_arr = np.asarray(chain_ids)
-    cross_chain = chain_arr[:, None] != chain_arr[None, :]
-    if cross_chain.sum() == 0:
-        return {
-            "iface_pae_mean": float("nan"),
-            "interchain_block_mean": float("nan"),
-            "n_contacts": 0,
-        }
-
-    interchain_block_mean = float(np.asarray(pae_matrix)[cross_chain].mean())
-    dist_matrix = cdist(structure_cb, structure_cb)
-    interface_mask = cross_chain & (dist_matrix < IPAE_CUTOFF)
-    n_contacts = int(interface_mask.sum())
-    iface_pae_mean = float(np.asarray(pae_matrix)[interface_mask].mean()) if n_contacts else float("nan")
+    interchain_block_mean = compute_interchain_block_mean(pae_matrix, chain_ids)
+    iface_pae_mean, n_contacts = compute_ipae_8A_with_count(
+        pae_matrix,
+        structure_cb,
+        chain_ids,
+        cutoff_A=IPAE_CUTOFF,
+    )
     return {
         "iface_pae_mean": iface_pae_mean,
         "interchain_block_mean": interchain_block_mean,
         "n_contacts": n_contacts,
     }
-
