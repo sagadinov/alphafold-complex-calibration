@@ -1,6 +1,6 @@
-part,filename,n_rows,n_targets,target_min,target_max
-1,abag_train_v2_part01.csv,54987,1275,1a14,4pgj
-2,abag_train_v2_part02.csv,54973,1171,4pir,6ion
-3,abag_train_v2_part03.csv,55000,1198,6ir1,7f9w
-4,abag_train_v2_part04.csv,54963,1210,7f9y,7vvj
-5,abag_train_v2_part05.csv,49182,2191,7vvk,9jbq
+part,filename,n_rows,n_targets,target_first,target_last,file_size_bytes,sha256
+1,abag_train_v2_part01.csv,54987,1275,1a14,4pgj,10666553,bf050cc96dcc52c856bd8d18d75bb9cd060be15d31a9d43d17a9b334f901825b
+2,abag_train_v2_part02.csv,54973,1171,4pir,6ion,10689477,f08dde27ecf7ab2ceb031365d01b52c448340e090b6e22ee401cc32037f99aab
+3,abag_train_v2_part03.csv,55000,1198,6ir1,7f9w,10710497,92e4a9bcf1c7c9144d7704e3250614570c52aeb9d30ada43927df6459eed4441
+4,abag_train_v2_part04.csv,54963,1210,7f9y,7vvj,10759988,33b76a30e2429933605342b1cda25dca7193d2d55270cc2c0727837a1c437bad
+5,abag_train_v2_part05.csv,49182,2191,7vvk,9jbq,9503590,ddb6491140a3d5f66450df45405fb211c921d0e367a6b626a06b9b90f5712608

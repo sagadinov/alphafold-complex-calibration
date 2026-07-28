@@ -1,23 +1,33 @@
-"""Merge split Ab-Ag training CSV shards into one local file."""
+#!/usr/bin/env python3
+"""Merge the shipped target-preserving Ab-Ag training shards into one CSV."""
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
-import pandas as pd
-
-
-ROOT = Path(__file__).resolve().parents[1]
-PARTS = ROOT / "data" / "abag_train_v2_parts"
-OUT = ROOT / "data" / "abag_train_v2.csv"
+from src.abag_train_parts import default_output_path, merge_parts
 
 
 def main() -> None:
-    manifest = pd.read_csv(PARTS / "manifest.csv")
-    frames = [pd.read_csv(PARTS / filename, low_memory=False) for filename in manifest["filename"]]
-    merged = pd.concat(frames, ignore_index=True)
-    merged.to_csv(OUT, index=False)
-    print(f"merged rows={len(merged)} targets={merged['target_id'].nunique()} -> {OUT}")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=default_output_path(),
+        help="Output CSV path. Defaults to data/abag_train_v2.csv inside the repository.",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite an existing output CSV.",
+    )
+    args = parser.parse_args()
+    summary = merge_parts(output_path=args.output, force=args.force)
+    print(
+        "Merged {n_parts} shards -> {output} "
+        "(rows={n_rows}, unique_targets={n_targets})".format(**summary)
+    )
 
 
 if __name__ == "__main__":
