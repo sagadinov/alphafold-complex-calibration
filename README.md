@@ -198,6 +198,19 @@ Locked architecture:
 with ReLU activations, dropout `0.1`, and cumulative softmax probabilities
 over DockQ bins.
 
+
+## Decision-Use Experiments
+
+The paper demonstrates two tasks where calibrated probabilities provide value beyond ranking.
+
+### Expected-yield estimation
+Among a fixed set of top-K predictions, calibrated probabilities estimate the number of structurally successful models more accurately than treating raw scores as probabilities.
+
+### Reliability-controlled filtering
+A fixed calibrated rule (`P >= q`) maintains the requested reliability level across datasets more consistently than transferred raw-score thresholds, at a coverage cost.
+
+See `analysis/decision_use/README.md` for details and reproduction.
+
 ## Repository Layout
 
 ```text

@@ -54,3 +54,13 @@ See `DATA_LICENSE.md`. Software is MIT-licensed; data may have separate upstream
 - Repository URL: `https://github.com/sagadinov/alphafold-complex-calibration`
 - Release tag: `v1.0`
 - Commit SHA: the exact release commit is the commit pointed to by the `v1.0` tag
+
+## Decision-use v2 addendum
+
+Added:
+
+- fixed-ranking expected-yield estimation outputs under `analysis/decision_use/`
+- transfer reliability operating curves and bootstrap summaries
+- decision-use figures in `paper/figures/*v2*`
+- shipped decision-use reproduction script
+
