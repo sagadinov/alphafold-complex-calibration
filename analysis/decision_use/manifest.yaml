@@ -1,75 +1,36 @@
 canonical_repository_verified: true
-project_root: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration
-output_dir: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/analysis/decision_use_v2
+project_root: .
+output_dir: analysis/decision_use
 seed: 42
 n_bootstrap: 2000
 primary_outcome:
   name: acceptable
   value: 0.23
-supplementary_outcomes:
-  acceptable: 0.23
-  medium: 0.49
-  high: 0.8
-k_values_main:
-  - 5
-  - 10
-  - 20
-  - 50
-k_values_ipae_abag:
-  - 5
-  - 10
-  - 20
-q_values:
-  - 0.5
-  - 0.6
-  - 0.7
-  - 0.8
-  - 0.85
-  - 0.9
-  - 0.95
+k_values_main: [5, 10, 20, 50]
+q_values: [0.50, 0.60, 0.70, 0.80, 0.85, 0.90, 0.95]
 source_files:
-  -
-    label: abag_predictions_v3
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/data/abag_predictions_v3.csv
-  -
-    label: general_predictions_v3
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/data/general_predictions_v3.csv
-  -
-    label: casp16_predictions_v3
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/data/casp16_predictions_v3.csv
-  -
-    label: abag_train_v2
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/data/abag_train_v2.csv
-  -
-    label: abag_test_v2
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/data/abag_test_v2.csv
-  -
-    label: general_v2
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/af3_atlas/PAPER_REVISION/data/general_v2.csv
-  -
-    label: locked_ce_5feat_general
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/models/locked_ce_5feat_general.pt
-  -
-    label: scaler_5feat_general
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/models/scaler_5feat_general.pkl
-  -
-    label: locked_ce_5feat_abag
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/models/locked_ce_5feat_abag.pt
-  -
-    label: scaler_5feat_abag
-    path: /proj/berzelius-2021-29/users/x_sasag/projects/AF3_Calibration/models/scaler_5feat_abag.pkl
-package_versions:
-  python: "3.11.5 (main, Sep 11 2023, 13:54:46) [GCC 11.2.0]"
-  platform: Linux-4.18.0-553.144.1.el8_10.x86_64-x86_64-with-glibc2.28
-  numpy: 1.26.4
-  pandas: 3.0.1
-  scipy: 1.17.1
-  sklearn: missing
-  matplotlib: 3.10.8
-  torch: 2.10.0+cpu
-  joblib: 1.5.3
-notes:
-  - Raw iPAE proxy is defined exactly as 1 / (1 + iface_pae_mean).
-  - Primary three-method comparisons use one common-valid row universe.
-  - Supplementary raw-vs-isotonic analyses retain a separate raw_iso_pairwise universe.
-  - Thresholds are frozen before the bootstrap and are never refit inside the bootstrap.
+  - label: abag_predictions_v3
+    path: data/abag_predictions_v3.csv
+  - label: general_predictions_v3
+    path: data/general_predictions_v3.csv
+  - label: casp16_predictions_v3
+    path: data/casp16_predictions_v3.csv
+  - label: abag_train_v2_parts
+    path: data/abag_train_v2_parts/
+  - label: abag_test_v2
+    path: data/abag_test_v2.csv
+  - label: general_v2
+    path: data/general_v2.csv
+  - label: locked_ce_5feat_abag
+    path: models/locked_ce_5feat_abag.pt
+  - label: scaler_5feat_abag
+    path: models/scaler_5feat_abag.pkl
+  - label: locked_ce_5feat_general
+    path: models/locked_ce_5feat_general.pt
+  - label: scaler_5feat_general
+    path: models/scaler_5feat_general.pkl
+outputs:
+  - paper/tables/tab3_fixed_ranking_yield.csv
+  - paper/figures/F2_fixed_ranking_yield.pdf
+  - paper/figures/F3_reliability_transfer.pdf
+  - paper/supplementary/figures/S2_abag_ipae_reliability.pdf

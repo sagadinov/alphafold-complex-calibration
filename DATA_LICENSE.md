@@ -1,97 +1,79 @@
-# Data Provenance and Licensing Notes
+# Data Provenance and Redistribution Plan
 
-This repository contains software, locked models, derived evaluation tables,
-and selected CSV datasets used for paper reproduction. The MIT software license
-in `LICENSE` does **not** automatically apply to all data files.
+This repository contains software, locked model artifacts, frozen evaluation outputs, and benchmark-derived CSV files. The MIT license in `LICENSE` applies to software only. Data and model files may carry separate provenance constraints.
 
-This document records provenance and redistribution status to the extent known
-at release time.
+This document classifies shipped artifacts into four categories:
 
-## 1. `data/abag_test_v2.csv`
+- **A. author-generated / expected redistributable**
+- **B. author-derived aggregate artifact / likely redistributable**
+- **C. upstream redistribution uncertain**
+- **D. should not be redistributed directly**
 
-- Contents: Ab-Ag evaluation summary table with DockQ labels, calibrated-input features, and audit/status columns
-- Source: author-generated release dataset derived from SAbDab-linked antibody-antigen benchmarking workflows
-- Original upstream source: SAbDab-derived structures plus AlphaFold prediction outputs used in the manuscript pipeline
-- Transformations: recomputed v2 iPAE-style features; removal of local cluster path columns for public release
-- Redistribution status: **uncertain**
-- Recommendation: keep under author-controlled release review until dataset redistribution terms are explicitly confirmed
+The repository is still private. Files in category C are retained because they are required for exact manuscript reproduction, but they must be reviewed again before a public release.
 
-## 2. `data/abag_train_v2_parts/`
+## A. Author-generated / expected redistributable
 
-- Contents: target-preserving shards of the Ab-Ag training summary table
-- Source: author-generated release split from the internal `abag_train_v2.csv`
-- Original upstream source: SAbDab-derived antibody-antigen training benchmark and AlphaFold prediction outputs
-- Transformations: split by `target_id`; removal of local cluster path columns for public release
-- Redistribution status: **uncertain**
-- Notes: scientific columns are retained; internal filesystem audit columns were removed
+- `models/locked_ce_5feat_abag.pt`
+- `models/scaler_5feat_abag.pkl`
+- `models/locked_ce_5feat_general.pt`
+- `models/scaler_5feat_general.pkl`
+- `paper/figures/`
+- `paper/tables/`
+- `paper/supplementary/`
+- `analysis/decision_use/*.csv`
+- `analysis/decision_use/*.md`
+- `analysis/permutation_importance_abag_v2.csv`
+- `analysis/permutation_importance_general_v2.csv`
+- `analysis/afdb/*comparison.csv`
+- `analysis/afdb/*summary.md`
+- all software under `src/`, `scripts/`, `tests/`, and workflow/config files
 
-## 3. `data/general_v2.csv`
+## B. Author-derived aggregate artifacts / likely redistributable
 
-- Contents: general multimer benchmark summary table used for General/CASP16 calibrator training or evaluation
-- Source: author-generated normalized release table
-- Original upstream source: AFM benchmark derived from Zhu et al. 2023 benchmarking data
-- Transformations: column normalization to release schema
-- Redistribution status: **uncertain**
-- Recommendation: if redistribution is questioned, distribute regeneration instructions and derived prediction exports instead
+- `data/abag_predictions_v3.csv`
+- `data/general_predictions_v3.csv`
+- `data/casp16_predictions_v3.csv`
+- `data/casp16_bootstrap_summary.csv`
+- `data/report_data_v3.json`
+- `analysis/afdb/afdb_positive_dockq.csv`
+- `analysis/afdb/afdb_positive_dockq_features.csv`
+- `analysis/afdb/afdb_positive_dockq_matched_precision.csv`
+- `analysis/afdb/afdb_positive_dockq_steinegger_transfer.csv`
 
-## 4. `data/casp16_v2.csv`
+These are frozen aggregate or derived outputs, but their upstream benchmark provenance should still be documented when the repository is made public.
 
-- Contents: CASP16 summary table with v2 DockQ and calibrated-input features
-- Source: author-generated release dataset
-- Original upstream source: CASP16 / MassiveFold / Bjorn prediction collections plus author recomputation pipeline
-- Transformations: recomputed DockQ v2 and iPAE-style features; removal of local cluster path columns for public release
-- Redistribution status: **uncertain**
+## C. Upstream redistribution uncertain
 
-## 5. `data/abag_predictions_v3.csv`, `data/general_predictions_v3.csv`, `data/casp16_predictions_v3.csv`
+- `data/abag_test_v2.csv`
+- `data/abag_train_v2_parts/`
+- `data/general_v2.csv`
+- `data/casp16_v2.csv`
+- `analysis/afdb/benchmark_full_features.csv`
+- `analysis/afdb/computed_features.csv`
+- `data/AFDB Complexes Supplementary Data__Confidence_benchmark_PDB_access.csv` if present in future revisions
 
-- Contents: locked per-model prediction exports for all methods used by the public reproduction scripts
-- Source: author-generated derived result files
-- Upstream dependencies: evaluation datasets and locked models
-- Transformations: method-level probability exports derived from frozen release results
-- Redistribution status: likely author-controlled derived data, but still depends on upstream benchmark provenance
+These files are required for exact end-to-end reproduction of the locked manuscript results, but they depend on upstream benchmark collections whose redistribution terms should be confirmed before public release.
 
-## 6. `data/casp16_bootstrap_summary.csv`
+## D. Should not be redistributed directly
 
-- Contents: locked bootstrap summary used for the CASP16 paper table
-- Source: author-generated derived evaluation artifact
-- Redistribution status: likely author-controlled derived result file
+Not shipped in this repository:
 
-## 7. `data/report_data_v3.json`
+- raw AlphaFold3 / AlphaFold-Multimer prediction directories
+- raw AFDB/NVIDIA bulk CIF and PAE archives
+- raw CASP16 cluster working directories
+- private cluster audit metadata and filesystem paths
 
-- Contents: locked aggregate result summary for the paper
-- Source: author-generated derived evaluation artifact
-- Redistribution status: likely author-controlled derived result file
+## Public-release plan
 
-## 8. `analysis/afdb/`
+If category C redistribution cannot be confirmed before public release:
 
-- Contents: AFDB benchmark comparison tables and derived features/results
-- Source: author-generated analysis outputs on top of the AFDB complexes supplementary benchmark
-- Original upstream source: AFDB complex benchmark supplementary data and AFDB/NVIDIA model files
-- Transformations: derived features, comparisons, matched-precision analysis, figures
-- Redistribution status: **mixed**
-- Notes: raw AFDB CIF/PAE model files are not redistributed here
+1. Remove the affected benchmark CSVs from the public repository.
+2. Keep category A/B derived predictions, tables, and figures where allowed.
+3. Provide acquisition and regeneration instructions for the removed benchmark tables.
+4. Keep repository-relative scripts that can operate once the user has acquired the permitted upstream inputs.
 
-## 9. `models/*.pt`, `models/*.pkl`
+## Additional notes
 
-- Contents: locked MLP weights and preprocessing scalers
-- Source: author-generated model artifacts
-- Upstream dependencies: manuscript training datasets
-- Redistribution status: expected to be redistributable by the authors, subject to upstream data-use constraints
-
-## 10. `paper/figures/` and `paper/tables/`
-
-- Contents: frozen manuscript figures and tables plus reproduced outputs generated from locked release data
-- Source: author-generated paper artifacts
-- Redistribution status: expected to be redistributable by the authors
-
-## 11. Software files
-
-- Paths: `src/`, `scripts/`, workflow files, tests, metadata
-- License: MIT under `LICENSE`
-
-## Release caveats
-
-Known data-rights questions remain for benchmark CSV redistribution, especially
-for SAbDab-derived Ab-Ag tables and AFM/CASP-derived summary tables. Those
-files were not deleted automatically because they are required for exact paper
-reproduction, but they should be reviewed before making the repository public.
+- The current private release intentionally omits machine-specific path columns from public-facing CSVs.
+- AFDB raw CIF/PAE files are not redistributed here; only frozen derived feature/result artifacts are included.
+- This document records practical redistribution handling, not legal advice.

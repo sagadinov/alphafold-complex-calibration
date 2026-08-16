@@ -1,9 +1,8 @@
 cff-version: 1.2.0
 title: "Post-hoc Calibration of AlphaFold Confidence Scores for Protein Complex Quality Prediction"
-message: "If you use this repository, please cite the manuscript and the software release."
+message: "If you use this repository, please cite the manuscript and the software release when final publication metadata become available."
 type: software
-version: "1.0"
-date-released: 2026-07-28
+version: "pre-submission-release-candidate"
 license: MIT
 url: "https://github.com/sagadinov/alphafold-complex-calibration"
 authors:
@@ -13,3 +12,4 @@ authors:
     given-names: Vsevolod
   - family-names: Elofsson
     given-names: Arne
+abstract: "Curated reproducibility release for post-hoc calibration of AlphaFold complex confidence scores."

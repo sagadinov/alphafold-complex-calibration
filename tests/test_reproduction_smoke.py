@@ -9,13 +9,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 SCRIPTS = [
-    ("scripts/reproduce_table1_abag.py", ROOT / "paper" / "tables" / "tab_abag_main_reproduced.csv"),
-    ("scripts/reproduce_table2_general.py", ROOT / "paper" / "tables" / "tab_general_main_reproduced.csv"),
-    ("scripts/reproduce_table3_casp16.py", ROOT / "paper" / "tables" / "tab_casp16_bootstrap_reproduced.csv"),
-    ("scripts/reproduce_table4_afdb.py", ROOT / "paper" / "tables" / "tab_afdb_full691_comparison.csv"),
+    ("scripts/reproduce_table1_abag.py", ROOT / "paper" / "tables" / "tab1_abag_main.csv"),
+    ("scripts/reproduce_table2_general.py", ROOT / "paper" / "tables" / "tab2_general_main.csv"),
+    ("scripts/reproduce_table3_yield.py", ROOT / "paper" / "tables" / "tab3_fixed_ranking_yield.csv"),
+    ("scripts/reproduce_table4_casp16.py", ROOT / "paper" / "tables" / "tab4_casp16_bootstrap.csv"),
     ("scripts/reproduce_figure1.py", ROOT / "paper" / "figures" / "F1_reliability_abag.pdf"),
-    ("scripts/reproduce_figure2.py", ROOT / "paper" / "figures" / "F2_matched_precision_bars.pdf"),
-    ("scripts/reproduce_figure3.py", ROOT / "paper" / "figures" / "F3_permutation_importance.pdf"),
+    ("scripts/reproduce_figure2.py", ROOT / "paper" / "figures" / "F2_fixed_ranking_yield.pdf"),
+    ("scripts/reproduce_figure3.py", ROOT / "paper" / "figures" / "F3_reliability_transfer.pdf"),
 ]
 
 

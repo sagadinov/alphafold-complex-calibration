@@ -1,53 +1,56 @@
 # Decision-Use Experiments
 
-These experiments test whether calibrated probabilities improve decisions that require probabilities, not just rankings.
+These frozen artifacts support the final manuscript decision-use section.
 
-## Experiment 1: Fixed-ranking expected yield
+## Experiment 1: Fixed-ranking expected-yield estimation
 
-Question: among the top-K predictions selected by a raw ranking score, how many satisfy `DockQ >= 0.23`?
+Candidates are first selected by a raw ranking score. Candidate identities are then fixed across probability estimators, so only the predicted expected yield differs.
+Observed successes are models satisfying `DockQ >= 0.23`. Predicted successes are the sum of estimated probabilities over the same fixed candidate set.
+The primary metric is mean absolute difference between predicted and observed success fractions across targets (Yield MAE).
 
-Design: candidate identity is fixed by the raw score ranking. Only the probability estimate changes. This isolates calibration from discrimination.
+Interpretation:
+- strong within-domain Ab-Ag benefit is present, especially for iPAE-ranked candidate sets;
+- General is limited to `K=5` because larger `K` values do not have enough eligible models per target in the locked dataset;
+- there is no clear transferred yield-estimation benefit on CASP16.
 
-Key result: on Ab-Ag, calibration reduces fixed-set yield estimation error substantially, especially for iPAE-ranked candidate sets.
+## Experiment 2: Minimum-reliability filtering
 
-Files:
+For calibrated methods, predictions are selected using `p >= q`.
+For raw ipTM, a score threshold is chosen on General to maximize coverage subject to the requested precision floor, then frozen for external transfer.
+General source evaluation uses target-grouped cross-fitting.
+General-trained calibrated probabilities are then applied frozen to Ab-Ag and CASP16.
+Precision and coverage must be interpreted jointly.
+
+Calibrated-rule point estimates met or exceeded the requested precision at the tested operating points more consistently than frozen raw-score thresholds, at the cost of reduced coverage.
+Calibration does not guarantee transfer under arbitrary distribution shift.
+
+## Files
+
 - `fixed_ranking_yield_metrics.csv`
 - `fixed_ranking_yield_bootstrap.csv`
 - `fixed_ranking_yield_per_target.csv`
-- `fixed_ranking_delta_audit.csv`
-- `fixed_ranking_yield_summary.md`
-
-## Experiment 2: Reliability operating curves
-
-Question: if a user requests predictions with at least `q` probability of success, does the observed precision match the request?
-
-Design: for calibrated methods, select predictions with `P >= q`. For raw scores, tune a threshold on one dataset and transfer it unchanged.
-
-Key result: raw transferred thresholds provide more coverage but lose their intended reliability meaning under transfer. Calibrated probability rules preserve requested minimum reliability more consistently, at a coverage cost.
-
-Files:
 - `reliability_operating_curve.csv`
 - `reliability_operating_curve_bootstrap.csv`
-- `reliability_operating_curve_summary.md`
-
-## Audits
-
 - `ranking_invariance_audit.csv`
 - `missingness_audit.csv`
-- `validation_report.md`
 - `manifest.yaml`
-- `figure_captions.md`
-
-## Main figures
-
-- `fixed_ranking_yield_figure_v2.*`
-- `reliability_transfer_figure_v2.*`
-- `abag_ipae_reliability_figure_v2.*`
+- `validation_report.md`
 
 ## Reproduction
 
-Use the shipped precomputed outputs directly:
+Main manuscript-facing artifacts:
 
 ```bash
 python scripts/reproduce_decision_use.py
+```
+
+This reconstructs:
+- `paper/tables/tab3_fixed_ranking_yield.*`
+- `paper/figures/F2_fixed_ranking_yield.*`
+- `paper/figures/F3_reliability_transfer.*`
+
+Supplementary Ab-Ag iPAE reliability figure:
+
+```bash
+python scripts/reproduce_supplementary_ipae_reliability.py
 ```

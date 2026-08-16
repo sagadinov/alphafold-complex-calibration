@@ -7,3 +7,6 @@ build/
 *.tar.gz
 .pytest_cache/
 .DS_Store
+.venv/
+.venv_release/
+venv/

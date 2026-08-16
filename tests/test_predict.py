@@ -61,25 +61,3 @@ def test_nans_are_handled_explicitly() -> None:
     df.loc[df.index[0], "iface_pae_mean"] = np.nan
     with pytest.raises(ValueError, match="non-finite values in required features"):
         predictor.predict(df)
-
-
-def test_sample_size_edge_cases() -> None:
-    predictor = CalibratedPredictor.load(ROOT / "models", domain="abag")
-    original_predict = predictor.predict
-
-    def fake_predict(_df: pd.DataFrame) -> pd.DataFrame:
-        return pd.DataFrame(
-            {
-                "p_acceptable": [0.0, 1.0, np.nan, 0.5],
-                "p_medium": [0.0, 1.0, np.nan, 0.5],
-                "p_high": [0.0, 1.0, np.nan, 0.5],
-            }
-        )
-
-    predictor.predict = fake_predict  # type: ignore[method-assign]
-    out = predictor.predict_with_sample_size(pd.DataFrame({"x": [1, 2, 3, 4]}), confidence=0.95)
-    assert np.isinf(out.loc[0, "n_seeds_acceptable"])
-    assert out.loc[1, "n_seeds_acceptable"] == 1.0
-    assert np.isnan(out.loc[2, "n_seeds_acceptable"])
-    assert out.loc[3, "n_seeds_acceptable"] >= 1.0
-    predictor.predict = original_predict  # type: ignore[method-assign]

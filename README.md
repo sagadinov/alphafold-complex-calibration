@@ -1,38 +1,31 @@
 # Post-hoc Calibration of AlphaFold Confidence Scores for Protein Complex Quality Prediction
 
-Code, locked models, release data, and reproduction scripts for the preprint:
+This repository is the curated reproducibility release for the manuscript **Post-hoc Calibration of AlphaFold Confidence Scores for Protein Complex Quality Prediction**.
+It contains locked calibrators, frozen evaluation outputs, manuscript reproduction scripts, and lightweight inference code.
+The repository remains private until manuscript submission.
 
-**Post-hoc Calibration of AlphaFold Confidence Scores for Protein Complex Quality Prediction**
+## What this repository contains
 
-This repository is a frozen preprint release. It is currently private and intended
-to become public at manuscript submission without changing scientific results.
+- locked Ab-Ag and General post-hoc calibrators
+- frozen per-model prediction exports used for the manuscript tables and figures
+- manuscript-facing reproduction scripts for the final paper artifacts
+- supplementary analyses retained for appendix/supporting validation
+- a small public inference API for applying the locked models to precomputed features
 
 ## Scope
 
-The repository ships:
+This is a **post-hoc calibration** release.
+It does not retrain AlphaFold, retrain structure generators, or parse raw AF3/AFM directory trees end-to-end.
+Inputs to the shipped predictor must already contain the required complex-level summary features.
 
-- locked Ab-Ag and General calibrated MLP models
-- evaluation datasets and frozen prediction exports used in the paper
-- public reproduction scripts for the shipped tables and figures
-- utilities for reconstructing the split Ab-Ag training CSV
+These probabilities are probabilities of satisfying specified **DockQ structural criteria**. They are not probabilities of biological binding, function, or experimental success.
+Calibration can improve interpretability within a validated setting, but it does not guarantee transfer under arbitrary distribution shift.
 
-It does **not** ship a full automated parser for raw AlphaFold3 or
-AlphaFold-Multimer output directories. `src/features.py` works on
-pre-extracted arrays that are already aligned to a PAE matrix.
-
-## Quick Start
+## Quick start
 
 ### Installation
 
 Recommended Python: `3.11`
-
-Tested environment:
-
-- Python `3.11`
-- CPU-only inference supported
-- CUDA not required for any shipped script
-
-Install the user-facing dependencies:
 
 ```bash
 python -m venv .venv
@@ -42,7 +35,7 @@ pip install -r requirements.txt
 
 For the exact tested package set, see `requirements-lock.txt`.
 
-### Run the locked calibrator
+### Run a calibrator
 
 ```python
 import pandas as pd
@@ -61,18 +54,15 @@ Supported domains:
 
 Do not treat the Ab-Ag model as a general-complex calibrator, or vice versa.
 
-### Required input columns
+## Required features
 
-Minimum required columns:
+The locked 5-feature MLP expects:
 
 - `iface_pae_mean`
 - `interchain_block_mean`
 - `iptm`
-- `ptm`
-
-Optional derived column:
-
 - `ranking_score`
+- `ptm`
 
 If `ranking_score` is absent, it is computed as:
 
@@ -80,19 +70,13 @@ If `ranking_score` is absent, it is computed as:
 0.8 * iptm + 0.2 * ptm
 ```
 
-Output columns:
+Outputs:
 
 - `p_acceptable`: estimated probability that `DockQ >= 0.23`
 - `p_medium`: estimated probability that `DockQ >= 0.49`
 - `p_high`: estimated probability that `DockQ >= 0.80`
 
-These are post-hoc calibrated probabilities from a locked 4-class cumulative
-MLP. They are not guarantees and should not be interpreted outside the model's
-training domain without additional validation.
-
-## Feature Assumptions
-
-The public model uses five features:
+## Feature assumptions
 
 | Feature | Meaning |
 | --- | --- |
@@ -107,46 +91,64 @@ Important limits:
 - `iface_pae_mean` is defined on predicted contacts, not native contacts
 - cross-chain residue pairs are counted as ordered pairs, matching the locked v2 pipeline
 - no-contact complexes return `NaN` for `iface_pae_mean`
-- the shipped feature helpers accept pre-extracted arrays; raw AF3/AFM directory parsing is not part of this release
+- raw AF3/AFM output parsing is not part of this public release
 
-## Reproducing the Paper Artifacts
+## Reproduce the paper
 
-Run all shipped reproduction scripts:
+Main paper artifacts:
 
 ```bash
 bash scripts/run_all.sh
 ```
 
-This regenerates:
+This reproduces the final manuscript-facing outputs:
 
-- `paper/tables/tab_abag_main_reproduced.*`
-- `paper/tables/tab_general_main_reproduced.*`
-- `paper/tables/tab_casp16_bootstrap_reproduced.*`
-- `paper/tables/tab_afdb_*`
+- `paper/tables/tab1_abag_main.*`
+- `paper/tables/tab2_general_main.*`
+- `paper/tables/tab3_fixed_ranking_yield.*`
+- `paper/tables/tab4_casp16_bootstrap.*`
 - `paper/figures/F1_reliability_abag.*`
-- `paper/figures/F2_matched_precision_bars.*`
-- `paper/figures/F3_permutation_importance.*`
+- `paper/figures/F2_fixed_ranking_yield.*`
+- `paper/figures/F3_reliability_transfer.*`
 
-The scripts use only files shipped in this repository.
-
-## Checksum Verification
-
-Verify all frozen artifacts:
+Supplementary/supporting artifacts:
 
 ```bash
-bash scripts/verify_manifest.sh
+bash scripts/run_supplementary.sh
 ```
 
-This checks the repository-wide `MANIFEST.sha256`.
+## Decision-use experiments
 
-## Ab-Ag Training Shards
+The manuscript uses two probability-dependent decision-use experiments.
 
-The original Ab-Ag training CSV is too large for a single GitHub-tracked file,
-so the public release ships target-preserving shards under:
+### Fixed-ranking expected-yield estimation
 
-```text
-data/abag_train_v2_parts/
-```
+Candidate identities are fixed by a raw ranking score.
+Observed successes are structural hits (`DockQ >= 0.23`), while predicted successes are sums of estimated probabilities over the same fixed set.
+The primary metric is mean absolute error in predicted success fraction across targets (Yield MAE).
+
+### Minimum-reliability filtering
+
+Calibrated rules use `p >= q`.
+Transferred raw-score rules use a score threshold chosen on General and then applied unchanged to external datasets.
+The key outputs are observed precision and coverage as functions of the requested minimum reliability.
+
+See `analysis/decision_use/README.md` for the frozen supporting artifacts.
+
+## Data and provenance
+
+Shipped evaluation/prediction files include:
+
+- `data/abag_test_v2.csv`
+- `data/general_v2.csv`
+- `data/casp16_v2.csv`
+- `data/abag_predictions_v3.csv`
+- `data/general_predictions_v3.csv`
+- `data/casp16_predictions_v3.csv`
+- `data/casp16_bootstrap_summary.csv`
+- `data/report_data_v3.json`
+
+The original Ab-Ag training CSV is shipped as target-preserving shards under `data/abag_train_v2_parts/`.
 
 Validate the shards:
 
@@ -154,96 +156,38 @@ Validate the shards:
 python scripts/validate_abag_train_parts.py
 ```
 
-Reconstruct a single local CSV:
+Reconstruct a local merged CSV if needed:
 
 ```bash
 python scripts/merge_abag_train_parts.py --output data/abag_train_v2.csv
 ```
 
-The merge script validates checksums and refuses to overwrite an existing file
-unless `--force` is passed.
-
-## Included Data
-
-- `data/abag_test_v2.csv`: Ab-Ag evaluation set
-- `data/general_v2.csv`: General multimer benchmark
-- `data/casp16_v2.csv`: CASP16 evaluation set
-- `data/casp16_bootstrap_summary.csv`: locked CASP16 bootstrap table source
-- `data/abag_predictions_v3.csv`
-- `data/general_predictions_v3.csv`
-- `data/casp16_predictions_v3.csv`
-- `data/report_data_v3.json`: locked paper summary JSON
-
-Local cluster path columns were removed from the public CSV releases because
-they were internal-only audit metadata and are not required for scientific
-reproduction.
-
 See `DATA_LICENSE.md` for provenance and redistribution notes.
 
-## Models
-
-Shipped model artifacts:
-
-- `models/locked_ce_5feat_abag.pt`
-- `models/scaler_5feat_abag.pkl`
-- `models/locked_ce_5feat_general.pt`
-- `models/scaler_5feat_general.pkl`
-
-Locked architecture:
-
-```text
-5 -> 64 -> 32 -> 4
-```
-
-with ReLU activations, dropout `0.1`, and cumulative softmax probabilities
-over DockQ bins.
-
-
-## Decision-Use Experiments
-
-The paper demonstrates two tasks where calibrated probabilities provide value beyond ranking.
-
-### Expected-yield estimation
-Among a fixed set of top-K predictions, calibrated probabilities estimate the number of structurally successful models more accurately than treating raw scores as probabilities.
-
-### Reliability-controlled filtering
-A fixed calibrated rule (`P >= q`) maintains the requested reliability level across datasets more consistently than transferred raw-score thresholds, at a coverage cost.
-
-See `analysis/decision_use/README.md` for details and reproduction.
-
-## Repository Layout
+## Repository structure
 
 ```text
 alphafold-complex-calibration/
-├── analysis/
-├── data/
-├── models/
-├── paper/
-│   ├── figures/
-│   └── tables/
-├── scripts/
-├── src/
-├── tests/
-├── CITATION.cff
-├── DATA_LICENSE.md
-├── MANIFEST.sha256
-└── RELEASE_NOTES.md
+├── analysis/             # frozen supporting analyses
+├── data/                 # frozen evaluation datasets and prediction exports
+├── models/               # locked MLP checkpoints and scalers
+├── paper/                # manuscript-facing figures and tables
+├── scripts/              # reproduction scripts
+├── src/                  # lightweight public inference code
+└── tests/                # smoke/integrity tests for the curated release
 ```
 
 ## Citation
 
 See `CITATION.cff`.
 
-Preprint DOI: pending.
-
 ## License
 
-Software is released under MIT: see `LICENSE`.
+Software is MIT-licensed under `LICENSE`.
+Data and model artifacts may have separate provenance constraints; see `DATA_LICENSE.md`.
 
-Data and derived result files may have different provenance and redistribution
-constraints: see `DATA_LICENSE.md`.
+## Limitations
 
-## Contact
-
-Public correspondence email is not yet attached to this release. Until that is
-added, use the repository issue tracker for release-related questions.
+- no raw AlphaFold output parser is included
+- benchmark redistribution status remains under review for some upstream-derived tables
+- AFDB raw CIF/PAE files are not redistributed; only frozen derived analysis outputs are shipped

@@ -1,66 +1,84 @@
-# Release Notes: v1.0
+# Release Notes
 
-## Scientific scope
+## Status
 
-This release packages the locked public reproduction repository for:
+This repository is a **private pre-submission release candidate** for the manuscript:
 
 **Post-hoc Calibration of AlphaFold Confidence Scores for Protein Complex Quality Prediction**
+
+It is not yet the final public scientific release. The repository remains private, and no immutable public release tag has been created for manuscript submission yet.
+
+## Final manuscript organization
+
+### Main figures
+
+- `paper/figures/F1_reliability_abag.*`
+- `paper/figures/F2_fixed_ranking_yield.*`
+- `paper/figures/F3_reliability_transfer.*`
+
+### Main tables
+
+- `paper/tables/tab1_abag_main.*`
+- `paper/tables/tab2_general_main.*`
+- `paper/tables/tab3_fixed_ranking_yield.*`
+- `paper/tables/tab4_casp16_bootstrap.*`
+
+### Supporting analyses retained in the release
+
+- AFDB supporting validation under `analysis/afdb/`
+- decision-use supporting files under `analysis/decision_use/`
+- supplementary figure/table reproduction under `paper/supplementary/`
+- permutation-importance CSVs under `analysis/`
+- Ab-Ag training shards under `data/abag_train_v2_parts/`
+
+## Scientific scope of this release
 
 Included:
 
 - locked Ab-Ag and General calibrated MLP models
-- frozen evaluation datasets and prediction exports used in the manuscript
-- public reproduction scripts for the shipped tables and figures
-- split Ab-Ag training data with integrity validation and reconstruction support
+- frozen evaluation datasets and per-model prediction exports used in the manuscript
+- repository-local reproduction scripts for the final manuscript artifacts
+- supporting analyses required for appendix/external-validation claims
 
-## Reproducible artifacts
+Not included:
 
-Figures:
+- AlphaFold retraining
+- raw AF3/AFM directory parsing workflows
+- raw AFDB CIF/PAE redistribution
+- exploratory model-selection history beyond retained frozen supporting outputs
 
-- `paper/figures/F1_reliability_abag.*`
-- `paper/figures/F2_matched_precision_bars.*`
-- `paper/figures/F3_permutation_importance.*`
+## Reproducibility
 
-Tables:
+Main-paper reproduction:
 
-- `paper/tables/tab_abag_main.tex`
-- `paper/tables/tab_general_v2.tex`
-- `paper/tables/tab_casp16_bootstrap_v2.tex`
-- `paper/tables/tab_*_reproduced.*`
-- `paper/tables/tab_afdb_*`
+```bash
+bash scripts/run_all.sh
+```
 
-## Integrity verification
+Supplementary/supporting reproduction:
 
-Run:
+```bash
+bash scripts/run_supplementary.sh
+```
+
+Integrity checks:
 
 ```bash
 bash scripts/verify_manifest.sh
 python scripts/validate_abag_train_parts.py
+pytest -q
 ```
 
 ## Known limitations
 
-- The release does not automate parsing of complete raw AF3/AFM output directories.
-- Some benchmark dataset redistribution rights remain to be confirmed; see `DATA_LICENSE.md`.
-- `predict_with_sample_size()` provides an independence-based estimate, not a guaranteed required number of seeds.
-- The public CSVs intentionally omit internal cluster filesystem path columns.
+- benchmark redistribution rights remain to be confirmed for some upstream-derived CSVs
+- AFDB raw model files are not redistributed in this repository
+- probabilities are structural-quality probabilities, not biological-function probabilities
+- calibration improves interpretability only within validated operating conditions and does not guarantee transfer under arbitrary shift
 
-## Data licensing caveats
+## Pre-publication actions remaining
 
-See `DATA_LICENSE.md`. Software is MIT-licensed; data may have separate upstream constraints.
-
-## Exact release state
-
-- Repository URL: `https://github.com/sagadinov/alphafold-complex-calibration`
-- Release tag: `v1.0`
-- Commit SHA: the exact release commit is the commit pointed to by the `v1.0` tag
-
-## Decision-use v2 addendum
-
-Added:
-
-- fixed-ranking expected-yield estimation outputs under `analysis/decision_use/`
-- transfer reliability operating curves and bootstrap summaries
-- decision-use figures in `paper/figures/*v2*`
-- shipped decision-use reproduction script
-
+1. Resolve or decide the final handling of data redistribution uncertainties.
+2. Make the repository public at manuscript submission.
+3. Create the final immutable public release tag.
+4. Add preprint/DOI metadata when available.
