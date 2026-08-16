@@ -77,7 +77,8 @@ def load_report() -> dict:
 
 
 def metric_is_min(metric: str) -> bool:
-    return metric in {"brier", "ece"}
+    base = metric.removesuffix("_mean").removesuffix("_std")
+    return base in {"brier", "ece"}
 
 
 def format_metric(value: float | int | None, decimals: int = 4, drop_zero: bool = False) -> str:

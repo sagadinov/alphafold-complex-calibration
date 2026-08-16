@@ -1,5 +1,5 @@
 \begin{table}[t]
-\caption{Ab-Ag calibration and classification results (62,681 evaluated models, 1,257 targets; 65,650 raw models total). All methods fitted on the Ab-Ag training split. Models with missing DockQ or required confidence features (n=2,969) were excluded from evaluation. pDockQ2 (published) uses original parameters from Zhu et al.; pDockQ2 (refit) uses parameters optimized on our training data. ABAG-Rank is evaluated on Matteo's test split, which overlaps our test split by 983 targets. Best per column in \textbf{bold}.}
+\caption{Ab-Ag calibration and classification results (62,681 evaluated models, 1,257 targets; 65,650 raw models total). Calibrated and refitted methods were fitted on the Ab-Ag training split; raw scores require no fitting, and pDockQ2 (published) retains its published parameters. Models with missing DockQ or required confidence features (n=2,969) were excluded from evaluation. pDockQ2 (refit) uses parameters optimized on our training data. ABAG-Rank is evaluated on the ABAG-Rank test split, which overlaps our test split by 983 targets. Best per column in \textbf{bold}.}
 \label{tab:abag_main}
 \centering
 \resizebox{\columnwidth}{!}{%
@@ -40,5 +40,5 @@ MLP 5-feat CE & \textbf{.0629} & .0154 & \textbf{.949} & \textbf{.641} & \textbf
 \end{tabular}
 }%
 \vspace{2pt}
-{\footnotesize $^\dagger$ABAG-Rank is evaluated on Matteo's test split (25{,}440 models, 1{,}091 targets), which overlaps our test split by 983 targets. Brier and ECE are not reported because its output is continuous DockQ rather than calibrated probability.}
+{\footnotesize $^\dagger$ABAG-Rank is evaluated on the ABAG-Rank test split (25{,}440 models, 1{,}091 targets), which overlaps our test split by 983 targets. Brier and ECE are not reported because its output is continuous DockQ rather than calibrated probability.}
 \end{table}

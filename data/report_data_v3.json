@@ -29,14 +29,14 @@
       "n_targets": 25,
       "trained_on": "general_v2_frozen",
       "excluded_target_note": "H1265 was excluded because DockQ v2 chain-mapping optimization did not converge within computational limits for this multi-chain target.",
-      "ipae_missing_note": "876 models (5.4%) with zero predicted cross-chain contacts within 8 A were excluded from iPAE-based evaluations.",
+      "ipae_missing_note": "876 models (5.4%) with zero predicted cross-chain contacts within 8 A were excluded from the common bootstrap evaluation universe because iface_pae_mean/interchain_block_mean were undefined.",
       "evaluation_method": "bootstrap",
       "bootstrap_params": {
         "n_per_target": 100,
         "k_iterations": 100,
         "min_models": 100,
         "seed": 42,
-        "n_targets_used": 22,
+        "n_targets_used": 23,
         "n_targets_excluded_bootstrap": [
           "H1217",
           "H1258"

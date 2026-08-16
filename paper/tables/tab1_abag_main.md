@@ -39,4 +39,4 @@
 | Isotonic iPAE | 0.0700 | 0.0092 | 0.937 | 0.572 | 0.610 |
 | MLP 5-feat CE | 0.0629 | 0.0154 | 0.949 | 0.641 | 0.653 |
 
-{\footnotesize $^\dagger$ABAG-Rank is evaluated on Matteo's test split (25{,}440 models, 1{,}091 targets), which overlaps our test split by 983 targets. Brier and ECE are not reported because its output is continuous DockQ rather than calibrated probability.}
+{\footnotesize $^\dagger$ABAG-Rank is evaluated on the ABAG-Rank test split (25{,}440 models, 1{,}091 targets), which overlaps our test split by 983 targets. Brier and ECE are not reported because its output is continuous DockQ rather than calibrated probability.}

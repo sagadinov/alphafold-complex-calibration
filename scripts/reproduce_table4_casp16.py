@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from common import DATA, PAPER_TAB, THRESHOLDS, ensure_dirs, format_metric, write_text
+from common import DATA, PAPER_TAB, THRESHOLDS, bold_best, ensure_dirs, format_metric, write_text
 
 METHOD_ORDER = [
     "Raw ipTM",
@@ -31,19 +31,18 @@ def build_markdown(df: pd.DataFrame) -> str:
     lines = ["# Table 4: CASP16 bootstrap evaluation", ""]
     for thr_name, thr_val in THRESHOLDS:
         sub = df[df["threshold_name"] == thr_name].copy()
+        best = {metric: bold_best(sub.to_dict("records"), f"{metric}_mean") for metric in ["brier", "ece", "auroc", "mcc", "ppv"]}
         lines += [f"## DockQ >= {thr_val:.2f}", ""]
         headers = ["Method", "Brier", "ECE", "AUROC", "MCC", "PPV"]
         lines.append("| " + " | ".join(headers) + " |")
         lines.append("| " + " | ".join(["---"] * len(headers)) + " |")
         for _, row in sub.iterrows():
-            vals = [
-                row["method"],
-                f"{row['brier_mean']:.4f}±{row['brier_std']:.4f}",
-                f"{row['ece_mean']:.4f}±{row['ece_std']:.4f}",
-                f"{row['auroc_mean']:.4f}±{row['auroc_std']:.4f}",
-                f"{row['mcc_mean']:.4f}±{row['mcc_std']:.4f}",
-                f"{row['ppv_mean']:.4f}±{row['ppv_std']:.4f}",
-            ]
+            vals = [row["method"]]
+            for metric in ["brier", "ece", "auroc", "mcc", "ppv"]:
+                text = f"{row[f'{metric}_mean']:.4f}±{row[f'{metric}_std']:.4f}"
+                if row["method"] in best[metric]:
+                    text = f"**{text}**"
+                vals.append(text)
             lines.append("| " + " | ".join(vals) + " |")
         lines.append("")
     return "\n".join(lines)
@@ -63,13 +62,17 @@ def build_latex(df: pd.DataFrame) -> str:
     ]
     for idx, (thr_name, thr_val) in enumerate(THRESHOLDS):
         sub = df[df["threshold_name"] == thr_name].copy()
+        best = {metric: bold_best(sub.to_dict("records"), f"{metric}_mean") for metric in ["brier", "ece", "auroc", "mcc", "ppv"]}
         lines.append(f"\\multicolumn{{6}}{{l}}{{\\textit{{DockQ $\\geq$ {thr_val:.2f}}}}} \\")
         for _, row in sub.iterrows():
             cells = [row["method"]]
             for metric in ["brier", "ece", "auroc", "mcc", "ppv"]:
                 mean = format_metric(row[f"{metric}_mean"], 4 if metric in {"brier", "ece"} else 4, drop_zero=True)
                 std = format_metric(row[f"{metric}_std"], 4, drop_zero=True)
-                cells.append(f"{mean}$\\pm${std}")
+                text = f"{mean}$\\pm${std}"
+                if row["method"] in best[metric]:
+                    text = f"\\textbf{{{text}}}"
+                cells.append(text)
             lines.append(" & ".join(cells) + " \\")
         if idx != len(THRESHOLDS) - 1:
             lines.append("\\midrule")
