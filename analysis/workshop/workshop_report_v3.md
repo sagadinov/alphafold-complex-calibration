@@ -22,16 +22,16 @@ Raw ipTM and isotonic ipTM are monotone-equivalent within Ab--Ag. Any matched-pr
 
 ## Macro versus global yield
 
-Macro fixed-K rows weight targets equally. Global rows pool all finite models and weight targets by their model count.
+Macro fixed-K rows weight targets equally. Global rows pool all finite models and weight targets by their model count. ``Const.'' is the Ab--Ag training prevalence for Ab--Ag and the pooled General OOF prevalence for General, applied to every model.
 
-| Dataset | DockQ | Macro K=5 observed/raw/iso | Global all observed/raw/iso |
+| Dataset | DockQ | Macro K=5 observed/raw/iso/const | Global all observed/raw/iso/const |
 | --- | ---: | --- | --- |
-| Ab-Ag | 0.23 | 0.411 / 0.548 / 0.439 | 0.355 / 0.478 / 0.360 |
-| Ab-Ag | 0.49 | 0.348 / 0.548 / 0.354 | 0.288 / 0.478 / 0.283 |
-| Ab-Ag | 0.80 | 0.179 / 0.548 / 0.195 | 0.145 / 0.478 / 0.149 |
-| General | 0.23 | 0.498 / 0.539 / 0.471 | 0.586 / 0.625 / 0.587 |
-| General | 0.49 | 0.349 / 0.539 / 0.317 | 0.433 / 0.625 / 0.434 |
-| General | 0.80 | 0.161 / 0.539 / 0.136 | 0.182 / 0.625 / 0.182 |
+| Ab-Ag | 0.23 | 0.411 / 0.548 / 0.439 / 0.448 | 0.355 / 0.478 / 0.360 / 0.448 |
+| Ab-Ag | 0.49 | 0.348 / 0.548 / 0.354 / 0.368 | 0.288 / 0.478 / 0.283 / 0.368 |
+| Ab-Ag | 0.80 | 0.179 / 0.548 / 0.195 / 0.212 | 0.145 / 0.478 / 0.149 / 0.212 |
+| General | 0.23 | 0.498 / 0.539 / 0.471 / 0.586 | 0.586 / 0.625 / 0.587 / 0.586 |
+| General | 0.49 | 0.349 / 0.539 / 0.317 / 0.433 | 0.433 / 0.625 / 0.434 / 0.433 |
+| General | 0.80 | 0.161 / 0.539 / 0.136 / 0.182 | 0.182 / 0.625 / 0.182 / 0.182 |
 
 ## K=5 difficulty stratification
 
@@ -58,9 +58,29 @@ Target difficulty is defined by observed fixed-K success fraction: hard <0.2, me
 | General | 0.80 | medium | 11 | +0.393 | -0.130 |
 | General | 0.80 | easy | 27 | -0.082 | -0.446 |
 
+## Constant-prevalence control
+
+The constant contains no model-specific information. It uses Ab--Ag training prevalence for Ab--Ag and pooled General OOF prevalence for General.
+
+| Dataset | DockQ | K | MAE Iso. | MAE Const. | Iso. wins |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Ab-Ag | 0.23 | 5 | 0.205 | 0.478 | yes |
+| Ab-Ag | 0.23 | 10 | 0.196 | 0.463 | yes |
+| Ab-Ag | 0.23 | 20 | 0.185 | 0.452 | yes |
+| Ab-Ag | 0.49 | 5 | 0.193 | 0.452 | yes |
+| Ab-Ag | 0.49 | 10 | 0.183 | 0.440 | yes |
+| Ab-Ag | 0.49 | 20 | 0.172 | 0.425 | yes |
+| Ab-Ag | 0.80 | 5 | 0.175 | 0.305 | yes |
+| Ab-Ag | 0.80 | 10 | 0.164 | 0.299 | yes |
+| Ab-Ag | 0.80 | 20 | 0.153 | 0.289 | yes |
+| General | 0.23 | 5 | 0.192 | 0.447 | yes |
+| General | 0.49 | 5 | 0.131 | 0.446 | yes |
+| General | 0.80 | 5 | 0.121 | 0.271 | yes |
+
 ## Yield outputs
 
 - Macro/global rows: 18
+- Constant-prevalence rows: `analysis/workshop_constant_prevalence_baseline.csv`
 - Full macro/global/stratified output: `analysis/workshop_yield_macro_vs_global.csv`
 - Per-target fixed-K rows: `analysis/workshop_yield_per_target.csv`
 - Main-table summary: `analysis/workshop_yield_simplified.csv`

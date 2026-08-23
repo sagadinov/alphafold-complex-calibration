@@ -39,3 +39,11 @@ frozen outputs; raw AF3/AFM prediction files are not redistributed.
 
 `workshop_yield_macro_vs_global.csv` additionally contains K=5
 hard/medium/easy target-difficulty strata and signed prediction errors.
+
+## Constant-prevalence control
+
+`workshop_constant_prevalence_baseline.csv` evaluates a no-information control
+that predicts Ab-Ag training prevalence for Ab-Ag and pooled General OOF prevalence for General. It is
+merged into `workshop_yield_simplified.csv` as `constant_prevalence` and
+`mae_constant`; this tests whether isotonic yield estimates use
+model-specific information beyond a learned mean.

@@ -1,30 +1,30 @@
 \begin{table}[t]
-\caption{Fixed-ranking macro yield and all-model global yield. Macro rows give each target equal weight after fixed raw-ipTM top-K selection. Global rows pool every scored model and therefore weight targets by their model count.}
+\caption{Fixed-ranking macro yield and all-model global yield. Macro rows give each target equal weight after fixed raw-ipTM top-K selection. Global rows pool every scored model and therefore weight targets by their model count. ``Const.'' predicts a reference prevalence for every model (Ab--Ag training prevalence; pooled General OOF prevalence). Error columns are per-target MAE for macro rows and aggregate absolute error for global rows.}
 \label{tab:workshop_yield_simplified}
 \centering
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{lllr rrrr}
+\begin{tabular}{lllr rrrrrrr}
 \toprule
-Dataset & DockQ & Aggregation & K & Obs. & Raw & Iso. & pDockQ2 \\
+Dataset & DockQ & Aggregation & K & Obs. & Raw & Iso. & pDockQ2 & Const. & Err. Iso. & Err. Const. \\
 \midrule
-Ab-Ag & 0.23 & Macro fixed-K & 5 & .411 & .548 & .439 & .210 \\
-Ab-Ag & 0.23 & Macro fixed-K & 10 & .403 & .534 & .423 & .201 \\
-Ab-Ag & 0.23 & Macro fixed-K & 20 & .389 & .516 & .402 & .188 \\
-Ab-Ag & 0.23 & Global all models & all & .355 & .478 & .360 & .162 \\
-Ab-Ag & 0.49 & Macro fixed-K & 5 & .348 & .548 & .354 & .210 \\
-Ab-Ag & 0.49 & Macro fixed-K & 10 & .339 & .534 & .339 & .201 \\
-Ab-Ag & 0.49 & Macro fixed-K & 20 & .323 & .516 & .321 & .188 \\
-Ab-Ag & 0.49 & Global all models & all & .288 & .478 & .283 & .162 \\
-Ab-Ag & 0.80 & Macro fixed-K & 5 & .179 & .548 & .195 & .210 \\
-Ab-Ag & 0.80 & Macro fixed-K & 10 & .174 & .534 & .185 & .201 \\
-Ab-Ag & 0.80 & Macro fixed-K & 20 & .165 & .516 & .173 & .188 \\
-Ab-Ag & 0.80 & Global all models & all & .145 & .478 & .149 & .162 \\
-General & 0.23 & Macro fixed-K & 5 & .498 & .539 & .471 & .314 \\
-General & 0.23 & Global all models & all & .586 & .625 & .587 & .387 \\
-General & 0.49 & Macro fixed-K & 5 & .349 & .539 & .317 & .314 \\
-General & 0.49 & Global all models & all & .433 & .625 & .434 & .387 \\
-General & 0.80 & Macro fixed-K & 5 & .161 & .539 & .136 & .314 \\
-General & 0.80 & Global all models & all & .182 & .625 & .182 & .387 \\
+Ab-Ag & 0.23 & Macro fixed-K & 5 & .411 & .548 & .439 & .210 & .448 & .205 & .478 \\
+Ab-Ag & 0.23 & Macro fixed-K & 10 & .403 & .534 & .423 & .201 & .448 & .196 & .463 \\
+Ab-Ag & 0.23 & Macro fixed-K & 20 & .389 & .516 & .402 & .188 & .448 & .185 & .452 \\
+Ab-Ag & 0.23 & Global all models & all & .355 & .478 & .360 & .162 & .448 & .005 & .093 \\
+Ab-Ag & 0.49 & Macro fixed-K & 5 & .348 & .548 & .354 & .210 & .368 & .193 & .452 \\
+Ab-Ag & 0.49 & Macro fixed-K & 10 & .339 & .534 & .339 & .201 & .368 & .183 & .440 \\
+Ab-Ag & 0.49 & Macro fixed-K & 20 & .323 & .516 & .321 & .188 & .368 & .172 & .425 \\
+Ab-Ag & 0.49 & Global all models & all & .288 & .478 & .283 & .162 & .368 & .005 & .080 \\
+Ab-Ag & 0.80 & Macro fixed-K & 5 & .179 & .548 & .195 & .210 & .212 & .175 & .305 \\
+Ab-Ag & 0.80 & Macro fixed-K & 10 & .174 & .534 & .185 & .201 & .212 & .164 & .299 \\
+Ab-Ag & 0.80 & Macro fixed-K & 20 & .165 & .516 & .173 & .188 & .212 & .153 & .289 \\
+Ab-Ag & 0.80 & Global all models & all & .145 & .478 & .149 & .162 & .212 & .004 & .068 \\
+General & 0.23 & Macro fixed-K & 5 & .498 & .539 & .471 & .314 & .586 & .192 & .447 \\
+General & 0.23 & Global all models & all & .586 & .625 & .587 & .387 & .586 & .001 & .000 \\
+General & 0.49 & Macro fixed-K & 5 & .349 & .539 & .317 & .314 & .433 & .131 & .446 \\
+General & 0.49 & Global all models & all & .433 & .625 & .434 & .387 & .433 & .001 & .000 \\
+General & 0.80 & Macro fixed-K & 5 & .161 & .539 & .136 & .314 & .182 & .121 & .271 \\
+General & 0.80 & Global all models & all & .182 & .625 & .182 & .387 & .182 & .000 & .000 \\
 \bottomrule
 \end{tabular}
 }%
