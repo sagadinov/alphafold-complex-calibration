@@ -1,0 +1,25 @@
+\begin{table}[t]
+\caption{Fixed-ranking yield estimation. Top-K candidates are fixed by raw ipTM. Entries report macro-average success fraction and mean per-target absolute error (MAE).}
+\label{tab:workshop_yield_simplified}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llr rrrrrrr}
+\toprule
+Dataset & DockQ & K & Obs. & Raw & Iso. & pDockQ2 & MAE Raw & MAE Iso. & MAE pDockQ2 \\
+\midrule
+Ab-Ag & 0.23 & 5 & .411 & .548 & .439 & .210 & .298 & .205 & .251 \\
+Ab-Ag & 0.23 & 10 & .403 & .534 & .423 & .201 & .285 & .196 & .246 \\
+Ab-Ag & 0.23 & 20 & .389 & .516 & .402 & .188 & .274 & .185 & .240 \\
+Ab-Ag & 0.49 & 5 & .348 & .548 & .354 & .210 & .319 & .193 & .218 \\
+Ab-Ag & 0.49 & 10 & .339 & .534 & .339 & .201 & .307 & .183 & .211 \\
+Ab-Ag & 0.49 & 20 & .323 & .516 & .321 & .188 & .296 & .172 & .200 \\
+Ab-Ag & 0.80 & 5 & .179 & .548 & .195 & .210 & .411 & .175 & .174 \\
+Ab-Ag & 0.80 & 10 & .174 & .534 & .185 & .201 & .397 & .164 & .163 \\
+Ab-Ag & 0.80 & 20 & .165 & .516 & .173 & .188 & .384 & .153 & .152 \\
+General & 0.23 & 5 & .498 & .539 & .471 & .314 & .252 & .192 & .317 \\
+General & 0.49 & 5 & .349 & .539 & .317 & .314 & .285 & .131 & .255 \\
+General & 0.80 & 5 & .161 & .539 & .136 & .314 & .404 & .121 & .232 \\
+\bottomrule
+\end{tabular}
+}%
+\end{table}

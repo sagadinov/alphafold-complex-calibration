@@ -191,3 +191,12 @@ Data and model artifacts may have separate provenance constraints; see `DATA_LIC
 - no raw AlphaFold output parser is included
 - benchmark redistribution status remains under review for some upstream-derived tables
 - AFDB raw CIF/PAE files are not redistributed; only frozen derived analysis outputs are shipped
+
+## Workshop Version
+
+A five-page workshop version of this work is prepared for a NeurIPS 2026
+workshop. It focuses on isotonic calibration of ipTM and fixed-ranking yield
+estimation across Ab-Ag, General, and AFDB evaluations. The workshop main
+narrative excludes the multi-feature MLP and iPAE analyses; iPAE is retained
+only in appendix artifacts. See `analysis/workshop/` for the frozen
+workshop-specific outputs.

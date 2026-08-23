@@ -1,0 +1,20 @@
+\begin{table}[t]
+\caption{Fixed-ranking yield estimation at DockQ $\geq$ 0.23 and $K=5$. Candidate identities are fixed by the indicated raw score; only expected yield changes. Lower MAE is better.}
+\label{tab:workshop_yield}
+\centering
+\begin{tabular}{llrrr}
+\toprule
+Dataset & Ranking & Estimator & Targets & MAE/K$\downarrow$ \\
+\midrule
+Ab-Ag & iptm & Iso. ipTM & 1257 & .205 \\
+Ab-Ag & iptm & Raw ipTM & 1257 & .298 \\
+Ab-Ag & iptm & pDockQ2 (published) & 1257 & .251 \\
+Ab-Ag & ipae & Calibrated iPAE probability & 1257 & .202 \\
+Ab-Ag & ipae & Raw iPAE proxy & 1257 & .336 \\
+Ab-Ag & ipae & pDockQ2 (published) & 1257 & .238 \\
+General & iptm & Iso. ipTM & 193 & .192 \\
+General & iptm & Raw ipTM & 193 & .252 \\
+General & iptm & pDockQ2 (published) & 193 & .317 \\
+\bottomrule
+\end{tabular}
+\end{table}

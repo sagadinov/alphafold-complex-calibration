@@ -1,0 +1,33 @@
+\begin{table}[t]
+\caption{Ab--Ag calibration results without iPAE; full results are in the appendix.}
+\label{tab:workshop_abag}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+Method & Brier$\downarrow$ & ECE$\downarrow$ & AUROC$\uparrow$ & MCC$\uparrow$ & PPV$\uparrow$ \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\geq$ 0.23 --- $n_+$\!=\!22,231, $n_-$\!=\!40,450}} \\
+Raw ipTM & .1213 & .1462 & .927 & .722 & .778 \\
+Raw ranking conf. & .1478 & .1944 & .926 & .682 & .712 \\
+pDockQ2 (published) & .1583 & .1929 & \textbf{.943} & .558 & \textbf{.951} \\
+ipSAEmax & .2710 & .2603 & .754 & .274 & .433 \\
+Iso. ipTM & \textbf{.0929} & \textbf{.0282} & .926 & \textbf{.742} & .855 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\geq$ 0.49 --- $n_+$\!=\!18,029, $n_-$\!=\!44,652}} \\
+Raw ipTM & .1327 & .1907 & .938 & .696 & .674 \\
+Raw ranking conf. & .1661 & .2563 & .936 & .643 & .606 \\
+pDockQ2 (published) & .1147 & .1260 & \textbf{.949} & .594 & \textbf{.888} \\
+ipSAEmax & .2886 & .3013 & .752 & .271 & .361 \\
+Iso. ipTM & \textbf{.0821} & \textbf{.0143} & .938 & \textbf{.739} & .790 \\
+\midrule
+\multicolumn{6}{l}{\textit{DockQ $\geq$ 0.80 --- $n_+$\!=\!9,070, $n_-$\!=\!53,611}} \\
+Raw ipTM & .2032 & .3336 & .932 & .497 & .359 \\
+Raw ranking conf. & .2461 & .3992 & .928 & .446 & .316 \\
+pDockQ2 (published) & .0730 & .0284 & \textbf{.933} & .579 & .600 \\
+ipSAEmax & .3411 & .4205 & .802 & .227 & .193 \\
+Iso. ipTM & \textbf{.0716} & \textbf{.0133} & .933 & \textbf{.599} & \textbf{.610} \\
+\bottomrule
+\end{tabular}
+}%
+\end{table}
