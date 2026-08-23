@@ -27,3 +27,15 @@ confidence scores.
 
 The release repository remains private until manuscript submission. These are
 frozen outputs; raw AF3/AFM prediction files are not redistributed.
+
+## Macro versus global yield
+
+`workshop_yield_simplified.csv` contains two distinct aggregations:
+
+- `macro_fixed_K`: equal-weight per-target yield for the same raw-ipTM top-K
+  candidates.
+- `global_all_models`: model-weighted yield pooled over every finite scored
+  model, with no K restriction.
+
+`workshop_yield_macro_vs_global.csv` additionally contains K=5
+hard/medium/easy target-difficulty strata and signed prediction errors.
