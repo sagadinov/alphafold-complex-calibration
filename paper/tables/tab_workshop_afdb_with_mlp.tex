@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{AFDB structural validation on the 304 positive complexes with finite DockQ. General-trained isotonic calibrators and the frozen General-trained MLP are applied without AFDB fitting. The MLP has all five required features for 303 of 304 complexes; all other rows use 304. ipSAEmax and pDockQ2max are the published AFDB directional-max scores.}
+\label{tab:workshop_afdb_with_mlp}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+Method & AUROC & AUPRC & Brier$\downarrow$ & ECE$\downarrow$ & $n_{90}$ & Recall$_{90}$ \\
+\midrule
+Raw ipTM & .886 & .856 & .1418 & .1020 & 44 & .263 \\
+Raw ranking conf. & .885 & .870 & .1462 & .1183 & 53 & .316 \\
+pDockQ2max (published) & .887 & .866 & .2813 & .3021 & 52 & .309 \\
+ipSAEmax & .911 & .896 & .1334 & .1220 & 105 & .625 \\
+Iso. ipTM & .884 & .841 & .1561 & .1159 & 14 & .086 \\
+MLP 5-feat CE & .891 & .874 & .1570 & .1182 & 65 & .388 \\
+\bottomrule
+\end{tabular}
+}%
+\end{table}
