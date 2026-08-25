@@ -28,7 +28,7 @@ FIGURE_PNG = ROOT / "paper" / "supplementary" / "figures" / "afdb_calibration_le
 THRESHOLDS = [("acceptable", 0.23), ("medium", 0.49), ("high", 0.80)]
 SCORES = {"ipTM": "iptm", "ipSAEmax": "ipsae_max"}
 TRAIN_SIZES = [5, 10, 20, 50, 100]
-TRAIN_PERCENTAGES = [1, 5, 10, 20, 40, 60, 80]
+TRAIN_PERCENTAGES = [1, 5, 10, 20, 50]
 N_REPEATS = 100
 SEED = 42
 
@@ -55,7 +55,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="AFDB isotonic-calibration learning curves")
     parser.add_argument(
         "--percentages", action="store_true",
-        help="Use 1, 5, 10, 20, 40, 60, and 80 percent of AFDB instead of fixed counts.",
+        help="Use 1, 5, 10, 20, and 50 percent of AFDB instead of fixed counts.",
     )
     return parser.parse_args()
 
