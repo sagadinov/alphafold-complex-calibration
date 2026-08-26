@@ -15,7 +15,9 @@ AFDB_INPUT = ANALYSIS / "afdb" / "afdb_positive_dockq_features.csv"
 GENERAL_INPUT = DATA / "general_v2.csv"
 OUTPUT = ANALYSIS / "workshop" / "workshop_afdb_recalibration_source.csv"
 SUMMARY = ANALYSIS / "workshop" / "workshop_afdb_recalibration_summary.md"
-TRAIN_SIZES = [1, 5, 10, 20, 50]
+# Retain the unavailable n=1 provenance row and add the requested n=100
+# local-calibration point using the identical paired split protocol.
+TRAIN_SIZES = [1, 5, 10, 20, 50, 100]
 N_REPEATS = 100
 SEED = 42
 

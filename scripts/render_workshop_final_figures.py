@@ -397,8 +397,10 @@ def render_figure3(source: pd.DataFrame) -> None:
                     label=method_name if (row_index, col_index) == (0, 0) else None,
                 )
             ax.set_title(f"DockQ >= {threshold_value:.2f}")
-            ax.set_xticks([1, 5, 10, 20, 50])
-            ax.set_xlim(0.5, 52)
+            # n=1 is retained in source data as unavailable provenance, but
+            # is not a plotted calibration point.
+            ax.set_xticks([5, 10, 20, 50, 100])
+            ax.set_xlim(3, 102)
             ax.grid(axis="y", alpha=0.16)
             if col_index == 0:
                 ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)")

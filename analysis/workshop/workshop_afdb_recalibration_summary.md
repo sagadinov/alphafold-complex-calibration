@@ -9,22 +9,22 @@
 - `train_size = 1` is marked unavailable because a disjoint stratified binary calibration split cannot be defined with fewer than two calibration examples.
 
 ## DockQ >= 0.23
-- Raw ipTM: best mean Brier 0.1416 ± 0.0027 at train_size=20.
-- Isotonic ipTM (General frozen): best mean Brier 0.1557 ± 0.0035 at train_size=20.
-- Isotonic ipTM (local AFDB): best mean Brier 0.1437 ± 0.0113 at train_size=50.
-- Raw ipSAEmax: best mean Brier 0.1329 ± 0.0035 at train_size=20.
-- Isotonic ipSAEmax (local AFDB): best mean Brier 0.1258 ± 0.0127 at train_size=50.
+- Raw ipTM: best mean Brier 0.1406 ± 0.0067 at train_size=100.
+- Isotonic ipTM (General frozen): best mean Brier 0.1548 ± 0.0090 at train_size=100.
+- Isotonic ipTM (local AFDB): best mean Brier 0.1377 ± 0.0114 at train_size=100.
+- Raw ipSAEmax: best mean Brier 0.1322 ± 0.0086 at train_size=100.
+- Isotonic ipSAEmax (local AFDB): best mean Brier 0.1182 ± 0.0113 at train_size=100.
 
 ## DockQ >= 0.49
 - Raw ipTM: best mean Brier 0.1460 ± 0.0050 at train_size=50.
-- Isotonic ipTM (General frozen): best mean Brier 0.1870 ± 0.0071 at train_size=50.
-- Isotonic ipTM (local AFDB): best mean Brier 0.1491 ± 0.0110 at train_size=50.
+- Isotonic ipTM (General frozen): best mean Brier 0.1865 ± 0.0109 at train_size=100.
+- Isotonic ipTM (local AFDB): best mean Brier 0.1466 ± 0.0136 at train_size=100.
 - Raw ipSAEmax: best mean Brier 0.1314 ± 0.0056 at train_size=50.
-- Isotonic ipSAEmax (local AFDB): best mean Brier 0.1391 ± 0.0122 at train_size=50.
+- Isotonic ipSAEmax (local AFDB): best mean Brier 0.1341 ± 0.0119 at train_size=100.
 
 ## DockQ >= 0.8
 - Raw ipTM: best mean Brier 0.2121 ± 0.0038 at train_size=20.
 - Isotonic ipTM (General frozen): best mean Brier 0.1112 ± 0.0032 at train_size=50.
-- Isotonic ipTM (local AFDB): best mean Brier 0.1139 ± 0.0140 at train_size=50.
+- Isotonic ipTM (local AFDB): best mean Brier 0.1099 ± 0.0102 at train_size=100.
 - Raw ipSAEmax: best mean Brier 0.1775 ± 0.0017 at train_size=5.
-- Isotonic ipSAEmax (local AFDB): best mean Brier 0.1033 ± 0.0125 at train_size=50.
+- Isotonic ipSAEmax (local AFDB): best mean Brier 0.0976 ± 0.0120 at train_size=100.
