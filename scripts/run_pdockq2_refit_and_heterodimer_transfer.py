@@ -62,6 +62,11 @@ def apply_refit(df: pd.DataFrame, params: dict[str, float]) -> np.ndarray:
     return np.clip(sigmoid(compute_xi(df, params["d0"]), params["L"], params["x0"], params["k"], params["b"]), 0.0, 1.0)
 
 
+def apply_published(df: pd.DataFrame) -> np.ndarray:
+    """Published pDockQ2 numerical score, clipped after evaluation."""
+    return np.clip(sigmoid(compute_xi(df), 1.31, 84.733, 0.075, 0.005), 0.0, 1.0)
+
+
 def compute_ece(y_true: np.ndarray, probability: np.ndarray, n_bins: int = 10) -> float:
     probability = np.clip(np.asarray(probability, dtype=float), 0.0, 1.0)
     edges = np.linspace(0.0, 1.0, n_bins + 1)
@@ -117,6 +122,7 @@ def write_refit_outputs(train: pd.DataFrame, test: pd.DataFrame, params: dict[st
     required = ["dockq", "iptm", "ptm", "iface_pae_mean", "mean_plddt"]
     test = test.dropna(subset=required).copy()
     test["pdockq2_refit"] = apply_refit(test, params)
+    test["pdockq2_published"] = apply_published(test)
 
     existing = pd.read_csv(WORKSHOP / "workshop_abag_table.csv")
     refit_rows: list[dict[str, object]] = []
@@ -134,28 +140,48 @@ def write_refit_outputs(train: pd.DataFrame, test: pd.DataFrame, params: dict[st
     combined.to_csv(ANALYSIS / "workshop_abag_table_with_refit.csv", index=False)
 
     yield_rows: list[dict[str, object]] = []
+    published_k50_rows: list[dict[str, object]] = []
     for threshold_name, threshold_value in THRESHOLDS:
         y_column = f"y_{threshold_name}"
         test[y_column] = (test["dockq"].to_numpy(float) >= threshold_value).astype(int)
-        for k in (5, 10, 20):
-            observed, predicted = [], []
+        for k in (5, 10, 20, 50):
+            observed, predicted_refit, predicted_published = [], [], []
             for _, group in test.groupby("target_id", sort=False):
                 if len(group) < k:
                     continue
                 # Match the frozen workshop rule: descending raw ipTM, then model ID.
                 selected = group.sort_values(["iptm", "model_id"], ascending=[False, True], kind="mergesort").head(k)
                 observed.append(float(selected[y_column].mean()))
-                predicted.append(float(selected["pdockq2_refit"].mean()))
-            observed_array, predicted_array = np.asarray(observed), np.asarray(predicted)
+                predicted_refit.append(float(selected["pdockq2_refit"].mean()))
+                predicted_published.append(float(selected["pdockq2_published"].mean()))
+            observed_array = np.asarray(observed)
+            refit_array = np.asarray(predicted_refit)
+            published_array = np.asarray(predicted_published)
             yield_rows.append({
                 "dataset": "abag", "dataset_label": "Ab-Ag", "threshold": threshold_name,
                 "threshold_val": threshold_value, "aggregation": "macro_fixed_K", "K": k,
                 "n_targets": len(observed_array), "n_models": len(observed_array) * k,
-                "observed": float(observed_array.mean()), "pdockq2_refit": float(predicted_array.mean()),
-                "mae_pdockq2_refit": float(np.abs(predicted_array - observed_array).mean()),
+                "observed": float(observed_array.mean()), "pdockq2_refit": float(refit_array.mean()),
+                "mae_pdockq2_refit": float(np.abs(refit_array - observed_array).mean()),
             })
+            if k == 50:
+                published_k50_rows.append({
+                    "dataset": "abag", "dataset_label": "Ab-Ag", "threshold": threshold_name,
+                    "threshold_val": threshold_value, "aggregation": "macro_fixed_K", "K": k,
+                    "n_targets": len(observed_array), "n_models": len(observed_array) * k,
+                    "observed": float(observed_array.mean()), "pdockq2": float(published_array.mean()),
+                    "mae_pdockq2": float(np.abs(published_array - observed_array).mean()),
+                })
     refit_yield = pd.DataFrame(yield_rows)
     existing_yield = pd.read_csv(WORKSHOP / "workshop_yield_simplified.csv")
+    # The original workshop pDockQ2 producer only emitted K=5,10,20.  Append
+    # its previously omitted K=50 rows on the same raw-ipTM-ranked sets.
+    existing_k = pd.to_numeric(existing_yield["K"], errors="coerce")
+    # Replace rather than duplicate these rows on subsequent reproductions,
+    # while retaining the legacy ordering of every pre-existing row.
+    existing_yield = existing_yield.loc[existing_k != 50].copy()
+    existing_yield = pd.concat([existing_yield, pd.DataFrame(published_k50_rows)], ignore_index=True, sort=False)
+    existing_yield.to_csv(WORKSHOP / "workshop_yield_simplified.csv", index=False)
     key_columns = ["dataset", "dataset_label", "threshold", "threshold_val", "aggregation", "K", "n_targets", "n_models"]
     # Existing workshop rows mix numeric K values and the string "all". Use a
     # normalized internal join key while retaining the original display column.

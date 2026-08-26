@@ -44,3 +44,6 @@ mae_across_K,refit,high,0.8,Isotonic ipTM,50,0.141598053302704,,analysis/decisio
 mae_across_K,refit,high,0.8,pDockQ2 (Ab-Ag refit),5,0.2572507680302511,,analysis/workshop_yield_with_refit.csv
 mae_across_K,refit,high,0.8,pDockQ2 (Ab-Ag refit),10,0.2431267047154009,,analysis/workshop_yield_with_refit.csv
 mae_across_K,refit,high,0.8,pDockQ2 (Ab-Ag refit),20,0.2272163070713007,,analysis/workshop_yield_with_refit.csv
+mae_across_K,refit,acceptable,0.23,pDockQ2 (Ab-Ag refit),50,0.2019300576132283,,analysis/workshop_yield_with_refit.csv
+mae_across_K,refit,medium,0.49,pDockQ2 (Ab-Ag refit),50,0.1865797633433014,,analysis/workshop_yield_with_refit.csv
+mae_across_K,refit,high,0.8,pDockQ2 (Ab-Ag refit),50,0.2085425277196566,,analysis/workshop_yield_with_refit.csv
