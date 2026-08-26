@@ -1,0 +1,46 @@
+panel,variant,threshold,threshold_val,method,K,value,value_fraction,source_file
+K20_models_passing,published,acceptable,0.23,Observed,20,7.781225139220366,0.3890612569610183,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,acceptable,0.23,Raw ipTM,20,10.323571996817819,0.516178599840891,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,acceptable,0.23,Isotonic ipTM,20,8.047267487943138,0.4023633743971569,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,acceptable,0.23,pDockQ2 (published),20,3.760427698345244,0.1880213849172622,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,acceptable,0.23,Raw ipTM,5,0.2982498011137629,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Raw ipTM,10,0.284623707239459,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Raw ipTM,20,0.2735580747812251,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Raw ipTM,50,0.2542406028368794,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Isotonic ipTM,5,0.2054581052762863,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Isotonic ipTM,10,0.1959476628655392,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Isotonic ipTM,20,0.1851323878876029,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,Isotonic ipTM,50,0.1707944277676904,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,acceptable,0.23,pDockQ2 (published),5,0.2508581917551095,,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,acceptable,0.23,pDockQ2 (published),10,0.2460576559318635,,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,acceptable,0.23,pDockQ2 (published),20,0.2398573089354308,,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,medium,0.49,Observed,20,6.4638027048528235,0.3231901352426412,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,medium,0.49,Raw ipTM,20,10.323571996817819,0.516178599840891,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,medium,0.49,Isotonic ipTM,20,6.417049404561976,0.3208524702280988,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,medium,0.49,pDockQ2 (published),20,3.760427698345244,0.1880213849172622,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,medium,0.49,Raw ipTM,5,0.3187525855210819,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Raw ipTM,10,0.307156722354813,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Raw ipTM,20,0.2959152744630071,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Raw ipTM,50,0.2778562056737588,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Isotonic ipTM,5,0.1928141043184236,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Isotonic ipTM,10,0.1834832997882465,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Isotonic ipTM,20,0.1721895222967838,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,Isotonic ipTM,50,0.1594247542617438,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,medium,0.49,pDockQ2 (published),5,0.2184707345463099,,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,medium,0.49,pDockQ2 (published),10,0.2108552617209976,,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,medium,0.49,pDockQ2 (published),20,0.2003325367578291,,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,high,0.8,Observed,20,3.295147175815432,0.1647573587907716,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,high,0.8,Raw ipTM,20,10.323571996817819,0.516178599840891,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,high,0.8,Isotonic ipTM,20,3.4573434717355624,0.1728671735867781,analysis/workshop/workshop_yield_simplified.csv
+K20_models_passing,published,high,0.8,pDockQ2 (published),20,3.760427698345244,0.1880213849172622,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,high,0.8,Raw ipTM,5,0.4109817024661894,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Raw ipTM,10,0.3974956245027844,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Raw ipTM,20,0.3843273667462211,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Raw ipTM,50,0.3695906028368794,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Isotonic ipTM,5,0.1752904503960767,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Isotonic ipTM,10,0.1640240414951465,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Isotonic ipTM,20,0.152736043922544,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,Isotonic ipTM,50,0.141598053302704,,analysis/decision_use/fixed_ranking_yield_metrics.csv
+mae_across_K,published,high,0.8,pDockQ2 (published),5,0.1740376587946739,,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,high,0.8,pDockQ2 (published),10,0.1631660867485334,,analysis/workshop/workshop_yield_simplified.csv
+mae_across_K,published,high,0.8,pDockQ2 (published),20,0.1519717212021668,,analysis/workshop/workshop_yield_simplified.csv
