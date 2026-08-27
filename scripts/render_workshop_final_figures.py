@@ -43,7 +43,7 @@ F2_STYLES = {
 
 F3_STYLES = {
     "Raw ipTM": {"color": "#374151", "linestyle": "--", "marker": "s"},
-    "Isotonic ipTM (General frozen)": {"color": "#60A5FA", "linestyle": ":", "marker": "P"},
+    "Isotonic ipTM (General frozen)": {"color": "#FA8072", "linestyle": ":", "marker": "P"},
     "Isotonic ipTM (local AFDB)": {"color": "#2563EB", "linestyle": "-", "marker": "o"},
     "Raw ipSAEmax": {"color": "#10B981", "linestyle": "--", "marker": "D"},
     "Isotonic ipSAEmax (local AFDB)": {"color": "#059669", "linestyle": "-", "marker": "o"},
@@ -401,27 +401,34 @@ def render_figure3(source: pd.DataFrame, out_dir: Path = PAPER_FIG, out_base: st
                 if line.empty:
                     continue
                 style = F3_STYLES[method_name]
-                # The source CSV retains SD and all repeat-level values, but
-                # the main Figure 3 intentionally shows local means only.
-                ax.plot(
+                # Local calibrators vary across the 100 paired splits; show
+                # their mean with the split-to-split SD. Fixed baselines do
+                # not have error bars because they are evaluated once.
+                ax.errorbar(
                     line["train_size"].to_numpy(float) / 304.0 * 100.0,
                     line["mean"],
+                    yerr=line["std"],
                     color=style["color"],
                     linestyle="-",
                     linewidth=2.8,
+                    marker=style["marker"],
+                    markersize=6.5,
+                    elinewidth=1.6,
+                    capsize=3.5,
+                    capthick=1.6,
                     label=method_name if (row_index, col_index) == (0, 0) else None,
                 )
-            ax.set_title(f"DockQ >= {threshold_value:.2f}", fontsize=17)
+            ax.set_title(f"DockQ >= {threshold_value:.2f}", fontsize=19)
             ax.set_xticks([1, 5, 10, 20, 30])
             ax.set_xlim(0.5, 33.5)
             ax.grid(axis="y", alpha=0.16)
-            ax.tick_params(axis="both", labelsize=13)
+            ax.tick_params(axis="both", labelsize=16)
             if col_index == 0:
-                ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)", fontsize=16)
+                ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)", fontsize=18)
             if row_index == 1:
-                ax.set_xlabel("AFDB dataset used for calibration (%)", fontsize=15)
+                ax.set_xlabel("[%] of data used", fontsize=18)
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.035), fontsize=15)
+    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.035), fontsize=17)
     fig.tight_layout(rect=(0, 0, 1, 0.94))
     out_dir.mkdir(parents=True, exist_ok=True)
     fig.savefig(out_dir / f"{out_base}.pdf", bbox_inches="tight", metadata=PDF_METADATA)
