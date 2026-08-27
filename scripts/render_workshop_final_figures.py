@@ -367,50 +367,65 @@ def render_figure2(source: pd.DataFrame, variant: str) -> None:
     plt.close(fig)
 
 
-def render_figure3(source: pd.DataFrame) -> None:
+def render_figure3(source: pd.DataFrame, out_dir: Path = PAPER_FIG, out_base: str = "F3_workshop_afdb_recalibration") -> None:
     fig, axes = plt.subplots(2, 3, figsize=(14.2, 8.0), sharex=True)
+    local_methods = ["Isotonic ipTM (local AFDB)", "Isotonic ipSAEmax (local AFDB)"]
+    # Nearest supported n=5-grid values to 1%, 5%, 10%, 20%, and 30% of 304.
+    display_train_sizes = {5, 15, 30, 60, 90}
     for col_index, (threshold_name, threshold_value) in enumerate(THRESHOLDS):
         for row_index, metric in enumerate(["brier", "ece"]):
             ax = axes[row_index, col_index]
             panel = source.loc[(source["threshold"] == threshold_name) & (source["metric"] == metric)].copy()
-            for method_name in [
-                "Raw ipTM",
-                "Isotonic ipTM (General frozen)",
-                "Isotonic ipTM (local AFDB)",
-                "Raw ipSAEmax",
-                "Isotonic ipSAEmax (local AFDB)",
-            ]:
+            # Baselines are evaluated once on all 304 complexes and therefore
+            # appear as flat reference lines without split-wise error bars.
+            for method_name in ["Raw ipTM", "Isotonic ipTM (General frozen)", "Raw ipSAEmax"]:
                 line = panel.loc[(panel["method"] == method_name) & (panel["available"])].sort_values("train_size")
                 if line.empty:
                     continue
                 style = F3_STYLES[method_name]
-                ax.errorbar(
-                    line["train_size"],
-                    line["mean"],
-                    yerr=line["std"],
+                ax.axhline(
+                    float(line["mean"].iloc[0]),
                     color=style["color"],
-                    linestyle=style["linestyle"],
-                    marker=style["marker"],
-                    linewidth=2.0,
-                    markersize=5,
-                    capsize=3,
+                    # All reference baselines use the same unobtrusive dash.
+                    linestyle="--",
+                    linewidth=2.8,
+                    alpha=0.65,
                     label=method_name if (row_index, col_index) == (0, 0) else None,
                 )
-            ax.set_title(f"DockQ >= {threshold_value:.2f}")
-            # n=1 is retained in source data as unavailable provenance, but
-            # is not a plotted calibration point.
-            ax.set_xticks([5, 10, 20, 50, 100])
-            ax.set_xlim(3, 102)
+            for method_name in local_methods:
+                line = panel.loc[
+                    (panel["method"] == method_name)
+                    & (panel["available"])
+                    & (panel["train_size"].isin(display_train_sizes))
+                ].sort_values("train_size")
+                if line.empty:
+                    continue
+                style = F3_STYLES[method_name]
+                # The source CSV retains SD and all repeat-level values, but
+                # the main Figure 3 intentionally shows local means only.
+                ax.plot(
+                    line["train_size"].to_numpy(float) / 304.0 * 100.0,
+                    line["mean"],
+                    color=style["color"],
+                    linestyle="-",
+                    linewidth=2.8,
+                    label=method_name if (row_index, col_index) == (0, 0) else None,
+                )
+            ax.set_title(f"DockQ >= {threshold_value:.2f}", fontsize=17)
+            ax.set_xticks([1, 5, 10, 20, 30])
+            ax.set_xlim(0.5, 33.5)
             ax.grid(axis="y", alpha=0.16)
+            ax.tick_params(axis="both", labelsize=13)
             if col_index == 0:
-                ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)")
+                ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)", fontsize=16)
             if row_index == 1:
-                ax.set_xlabel("AFDB labelled calibration examples")
+                ax.set_xlabel("AFDB dataset used for calibration (%)", fontsize=15)
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.03))
+    fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.035), fontsize=15)
     fig.tight_layout(rect=(0, 0, 1, 0.94))
-    fig.savefig(PAPER_FIG / "F3_workshop_afdb_recalibration.pdf", bbox_inches="tight", metadata=PDF_METADATA)
-    fig.savefig(PAPER_FIG / "F3_workshop_afdb_recalibration.png", bbox_inches="tight", dpi=300)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_dir / f"{out_base}.pdf", bbox_inches="tight", metadata=PDF_METADATA)
+    fig.savefig(out_dir / f"{out_base}.png", bbox_inches="tight", dpi=300)
     plt.close(fig)
 
 
