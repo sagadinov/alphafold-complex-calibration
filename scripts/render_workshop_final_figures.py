@@ -49,6 +49,14 @@ F3_STYLES = {
     "Isotonic ipSAEmax (local AFDB)": {"color": "#059669", "linestyle": "-", "marker": "o"},
 }
 
+F3_LABELS = {
+    "Raw ipTM": "Raw ipTM",
+    "Isotonic ipTM (General frozen)": "Isotonic ipTM (General)",
+    "Isotonic ipTM (local AFDB)": "Isotonic ipTM (AFDB)",
+    "Raw ipSAEmax": "Raw ipSAEmax",
+    "Isotonic ipSAEmax (local AFDB)": "Isotonic ipSAEmax (AFDB)",
+}
+
 ABAG_ROWS = 62681
 GENERAL_ROWS = 5496
 AFDB_ROWS = 304
@@ -162,7 +170,7 @@ def render_figure1_panels(source: pd.DataFrame, dataset_order: list[str], out_ba
                     marker=spec["marker"],
                     linewidth=2.7 if method_name == "Isotonic ipTM" else 2.2,
                     markersize=6,
-                    label=method_name if (row_index, col_index) == (0, 0) else None,
+                    label=F3_LABELS[method_name] if (row_index, col_index) == (0, 0) else None,
                 )
             ax.plot([0, 1], [0, 1], "k--", linewidth=1.0, alpha=0.35)
             dataset_label = panel["dataset_label"].iloc[0]
@@ -390,7 +398,7 @@ def render_figure3(source: pd.DataFrame, out_dir: Path = PAPER_FIG, out_base: st
                     linestyle="--",
                     linewidth=2.8,
                     alpha=0.65,
-                    label=method_name if (row_index, col_index) == (0, 0) else None,
+                    label=F3_LABELS[method_name] if (row_index, col_index) == (0, 0) else None,
                 )
             for method_name in local_methods:
                 line = panel.loc[
@@ -416,11 +424,11 @@ def render_figure3(source: pd.DataFrame, out_dir: Path = PAPER_FIG, out_base: st
                     elinewidth=1.6,
                     capsize=3.5,
                     capthick=1.6,
-                    label=method_name if (row_index, col_index) == (0, 0) else None,
+                    label=F3_LABELS[method_name] if (row_index, col_index) == (0, 0) else None,
                 )
             ax.set_title(f"DockQ >= {threshold_value:.2f}", fontsize=19)
             ax.set_xticks([1, 5, 10, 20, 30])
-            ax.set_xlim(0.5, 33.5)
+            ax.set_xlim(0, 31)
             ax.grid(axis="y", alpha=0.16)
             ax.tick_params(axis="both", labelsize=16)
             if col_index == 0:
