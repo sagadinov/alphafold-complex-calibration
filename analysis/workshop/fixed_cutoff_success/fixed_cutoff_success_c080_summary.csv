@@ -1,0 +1,19 @@
+dataset,n_total,threshold,threshold_val,method,score_column,cutoff,n_selected,fraction_selected,observed_success_fraction,cutoff_label
+Ab-Ag,62681,acceptable,0.23,Raw ipTM,p_raw_iptm,0.8,15978,0.25490978127343217,0.911440731005132,hard-coded c=0.80
+Ab-Ag,62681,acceptable,0.23,Isotonic ipTM,p_iso_iptm_acceptable,0.8,16510,0.2633972017038656,0.9079951544518474,hard-coded c=0.80
+Ab-Ag,62681,acceptable,0.23,pDockQ2 (published),p_pdockq2_published,0.8,1421,0.02267034667602623,0.9901477832512315,hard-coded c=0.80
+Ab-Ag,62681,acceptable,0.23,pDockQ2 (Ab-Ag refit),p_pdockq2_refit_verified,0.8,1067,0.01702270225427163,0.9906279287722587,hard-coded c=0.80
+Ab-Ag,62681,medium,0.49,Raw ipTM,p_raw_iptm,0.8,15978,0.25490978127343217,0.8307673050444361,hard-coded c=0.80
+Ab-Ag,62681,medium,0.49,Isotonic ipTM,p_iso_iptm_medium,0.8,11842,0.18892487356615242,0.857709846309745,hard-coded c=0.80
+Ab-Ag,62681,medium,0.49,pDockQ2 (published),p_pdockq2_published,0.8,1421,0.02267034667602623,0.9352568613652358,hard-coded c=0.80
+Ab-Ag,62681,medium,0.49,pDockQ2 (Ab-Ag refit),p_pdockq2_refit_verified,0.8,1067,0.01702270225427163,0.9287722586691659,hard-coded c=0.80
+Ab-Ag,62681,high,0.8,Raw ipTM,p_raw_iptm,0.8,15978,0.25490978127343217,0.5097008386531481,hard-coded c=0.80
+Ab-Ag,62681,high,0.8,Isotonic ipTM,p_iso_iptm_high,0.8,0,0.0,,hard-coded c=0.80
+Ab-Ag,62681,high,0.8,pDockQ2 (published),p_pdockq2_published,0.8,1421,0.02267034667602623,0.7565095003518649,hard-coded c=0.80
+Ab-Ag,62681,high,0.8,pDockQ2 (Ab-Ag refit),p_pdockq2_refit_verified,0.8,1067,0.01702270225427163,0.7525773195876289,hard-coded c=0.80
+Ab-Ag,62681,acceptable,0.23,pDockQ2 (published),p_pdockq2_published,0.23,15762,0.25146376094829376,0.938078923994417,descriptive pDockQ2 c=0.23
+Ab-Ag,62681,acceptable,0.23,pDockQ2 (Ab-Ag refit),p_pdockq2_refit_verified,0.23,23351,0.37253713246438314,0.8188086163333476,descriptive pDockQ2 c=0.23
+Ab-Ag,62681,medium,0.49,pDockQ2 (published),p_pdockq2_published,0.23,15762,0.25146376094829376,0.871716787209745,descriptive pDockQ2 c=0.23
+Ab-Ag,62681,medium,0.49,pDockQ2 (Ab-Ag refit),p_pdockq2_refit_verified,0.23,23351,0.37253713246438314,0.7134598090017558,descriptive pDockQ2 c=0.23
+Ab-Ag,62681,high,0.8,pDockQ2 (published),p_pdockq2_published,0.23,15762,0.25146376094829376,0.5213805354650425,descriptive pDockQ2 c=0.23
+Ab-Ag,62681,high,0.8,pDockQ2 (Ab-Ag refit),p_pdockq2_refit_verified,0.23,23351,0.37253713246438314,0.3840520748576078,descriptive pDockQ2 c=0.23
