@@ -35,7 +35,8 @@ RELIABILITY_METHODS = {
 
 F2_STYLES = {
     "Observed": {"color": "#111827", "marker": "o", "linestyle": "-", "linewidth": 2.8},
-    "Raw ipTM": {"color": "#374151", "marker": "s", "linestyle": "--", "linewidth": 2.0},
+    # Longer dashes remain legible at manuscript scale.
+    "Raw ipTM": {"color": "#374151", "marker": "s", "linestyle": (0, (6, 3)), "linewidth": 2.0},
     "Isotonic ipTM": {"color": "#2563EB", "marker": "o", "linestyle": "-", "linewidth": 2.3},
     "pDockQ2 (published)": {"color": "#F59E0B", "marker": "^", "linestyle": ":", "linewidth": 2.0},
     "pDockQ2 (Ab-Ag refit)": {"color": "#B45309", "marker": "^", "linestyle": ":", "linewidth": 2.0},
