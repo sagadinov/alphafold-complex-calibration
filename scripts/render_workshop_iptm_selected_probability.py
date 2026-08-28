@@ -22,6 +22,7 @@ DATASETS = [
 
 STYLES = {
     "Observed": {"color": "#111827", "linestyle": "-", "marker": "o", "label": "Observed"},
+    "Raw ipTM": {"color": "#4B5563", "linestyle": "--", "marker": "s", "label": "Raw ipTM"},
     "Isotonic ipTM": {"color": "#2563EB", "linestyle": "-", "marker": "o", "label": "Isotonic ipTM"},
     "pDockQ2 (published)": {"color": "#F59E0B", "linestyle": "--", "marker": "^", "label": "pDockQ2 (published)"},
     "pDockQ2 (refit)": {"color": "#B45309", "linestyle": "-", "marker": "^", "label": "pDockQ2 (refit)"},
@@ -43,6 +44,7 @@ def compute_dataset(dataset: str, path: Path, refit_column: str, refit_label: st
     for threshold_name, threshold_value in THRESHOLDS:
         label = (frame["dockq"].to_numpy(float) >= threshold_value).astype(float)
         probabilities = {
+            "Raw ipTM": frame["iptm"].to_numpy(float),
             "Isotonic ipTM": frame[f"p_iso_iptm_{threshold_name}"].to_numpy(float),
             "pDockQ2 (published)": frame["p_pdockq2_published"].to_numpy(float),
             "pDockQ2 (refit)": frame[refit_column].to_numpy(float),
@@ -87,17 +89,20 @@ def main() -> None:
             ax = axes[row, col]
             panel = table[(table["dataset"] == dataset) & (table["threshold"] == threshold_name)]
             series = {
-                "Observed": panel["observed_success_fraction"],
+                "Raw ipTM": panel["predicted_Raw ipTM"],
                 "Isotonic ipTM": panel["predicted_Isotonic ipTM"],
                 "pDockQ2 (published)": panel["predicted_pDockQ2 (published)"],
                 "pDockQ2 (refit)": panel["predicted_pDockQ2 (refit)"],
+                "Observed": panel["observed_success_fraction"],
             }
             for method, values in series.items():
                 valid = values.notna() & panel["n_selected"].gt(0)
                 style = STYLES[method]
                 line = ax.plot(
                     panel.loc[valid, "iptm_cutoff"], values[valid], linewidth=2.7,
-                    markersize=6.5, markeredgewidth=0, **style,
+                    markersize=6.5, markeredgewidth=0,
+                    zorder=5 if method == "Observed" else 3,
+                    **style,
                 )[0]
                 if row == 0 and col == 0:
                     handles.append(line)
@@ -114,7 +119,7 @@ def main() -> None:
 
     fig.text(0.016, 0.72, "Ab-Ag", rotation=90, va="center", ha="center", fontsize=19, fontweight="bold")
     fig.text(0.016, 0.285, "General", rotation=90, va="center", ha="center", fontsize=19, fontweight="bold")
-    fig.legend(handles, [handle.get_label() for handle in handles], loc="upper center", ncol=4,
+    fig.legend(handles, [handle.get_label() for handle in handles], loc="upper center", ncol=5,
                frameon=False, bbox_to_anchor=(0.53, 1.01), columnspacing=1.4, handletextpad=0.5)
     fig.tight_layout(rect=(0.035, 0.0, 1.0, 0.94), h_pad=2.2, w_pad=1.5)
     metadata = {"Creator": "alphafold-complex-calibration"}
