@@ -1,0 +1,181 @@
+threshold,threshold_val,train_percent,train_targets,n_repeats,method,metric,mean,std,holdout_targets,protocol
+acceptable,0.23,1,13,1,Raw ipTM,brier,0.12127810819865667,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,1,13,1,Raw ipTM,ece,0.14624288061773105,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,5,63,1,Raw ipTM,brier,0.12127810819865667,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,5,63,1,Raw ipTM,ece,0.14624288061773105,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,10,126,1,Raw ipTM,brier,0.12127810819865667,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,10,126,1,Raw ipTM,ece,0.14624288061773105,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,20,251,1,Raw ipTM,brier,0.12127810819865667,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,20,251,1,Raw ipTM,ece,0.14624288061773105,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,30,377,1,Raw ipTM,brier,0.12127810819865667,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,30,377,1,Raw ipTM,ece,0.14624288061773105,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,50,628,1,Raw ipTM,brier,0.12127810819865667,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,50,628,1,Raw ipTM,ece,0.14624288061773105,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,1,13,1,Isotonic ipTM (General),brier,0.09738475673539933,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,1,13,1,Isotonic ipTM (General),ece,0.05530301568530136,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,5,63,1,Isotonic ipTM (General),brier,0.09738475673539933,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,5,63,1,Isotonic ipTM (General),ece,0.05530301568530136,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,10,126,1,Isotonic ipTM (General),brier,0.09738475673539933,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,10,126,1,Isotonic ipTM (General),ece,0.05530301568530136,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,20,251,1,Isotonic ipTM (General),brier,0.09738475673539933,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,20,251,1,Isotonic ipTM (General),ece,0.05530301568530136,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,30,377,1,Isotonic ipTM (General),brier,0.09738475673539933,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,30,377,1,Isotonic ipTM (General),ece,0.05530301568530136,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,50,628,1,Isotonic ipTM (General),brier,0.09738475673539933,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,50,628,1,Isotonic ipTM (General),ece,0.05530301568530136,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,1,13,1,Raw ipSAEmax,brier,0.2710311740507482,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,1,13,1,Raw ipSAEmax,ece,0.2603120951963115,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,5,63,1,Raw ipSAEmax,brier,0.2710311740507482,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,5,63,1,Raw ipSAEmax,ece,0.2603120951963115,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,10,126,1,Raw ipSAEmax,brier,0.2710311740507482,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,10,126,1,Raw ipSAEmax,ece,0.2603120951963115,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,20,251,1,Raw ipSAEmax,brier,0.2710311740507482,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,20,251,1,Raw ipSAEmax,ece,0.2603120951963115,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,30,377,1,Raw ipSAEmax,brier,0.2710311740507482,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,30,377,1,Raw ipSAEmax,ece,0.2603120951963115,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,50,628,1,Raw ipSAEmax,brier,0.2710311740507482,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,50,628,1,Raw ipSAEmax,ece,0.2603120951963115,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+acceptable,0.23,1,13,100,Isotonic ipTM (Ab-Ag),brier,0.11663260923137957,0.023140064674996262,1244,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,1,13,100,Isotonic ipTM (Ab-Ag),ece,0.08967251996779123,0.03949004904936267,1244,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,1,13,100,Isotonic ipSAEmax (Ab-Ag),brier,0.2143049938900047,0.023694984550000225,1244,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,1,13,100,Isotonic ipSAEmax (Ab-Ag),ece,0.12471610998968373,0.05605932504058707,1244,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,5,63,100,Isotonic ipTM (Ab-Ag),brier,0.09879224943763434,0.0035765696603787486,1194,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,5,63,100,Isotonic ipTM (Ab-Ag),ece,0.0457610325781714,0.01501519214802307,1194,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,5,63,100,Isotonic ipSAEmax (Ab-Ag),brier,0.18936999917717473,0.005590940215505675,1194,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,5,63,100,Isotonic ipSAEmax (Ab-Ag),ece,0.05885970213229185,0.024228067698915074,1194,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,10,126,100,Isotonic ipTM (Ab-Ag),brier,0.09598604668336536,0.002876974970721778,1131,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,10,126,100,Isotonic ipTM (Ab-Ag),ece,0.03633102633494744,0.01208900169028526,1131,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,10,126,100,Isotonic ipSAEmax (Ab-Ag),brier,0.1849299680218317,0.003368079737250168,1131,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,10,126,100,Isotonic ipSAEmax (Ab-Ag),ece,0.044584447395380165,0.016749278664223242,1131,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,20,251,100,Isotonic ipTM (Ab-Ag),brier,0.09419099252783,0.002789498960957729,1006,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,20,251,100,Isotonic ipTM (Ab-Ag),ece,0.028398402095858744,0.009239598412947707,1006,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,20,251,100,Isotonic ipSAEmax (Ab-Ag),brier,0.18315163255738742,0.003031890024422359,1006,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,20,251,100,Isotonic ipSAEmax (Ab-Ag),ece,0.03772836031400211,0.015075120263007464,1006,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,30,377,100,Isotonic ipTM (Ab-Ag),brier,0.09403239382905823,0.0033142547560935935,880,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,30,377,100,Isotonic ipTM (Ab-Ag),ece,0.02543385481075998,0.00822285293004706,880,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,30,377,100,Isotonic ipSAEmax (Ab-Ag),brier,0.18257822585835332,0.0032273924526289082,880,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,30,377,100,Isotonic ipSAEmax (Ab-Ag),ece,0.03618376623197657,0.01241551638883421,880,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,50,628,100,Isotonic ipTM (Ab-Ag),brier,0.09335858133592226,0.00549747239810413,629,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,50,628,100,Isotonic ipTM (Ab-Ag),ece,0.024946976195514278,0.007827629345265399,629,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,50,628,100,Isotonic ipSAEmax (Ab-Ag),brier,0.18149577990880264,0.004351929599574975,629,paired target-grouped StratifiedShuffleSplit
+acceptable,0.23,50,628,100,Isotonic ipSAEmax (Ab-Ag),ece,0.029248716047901066,0.009708191226737073,629,paired target-grouped StratifiedShuffleSplit
+medium,0.49,1,13,1,Raw ipTM,brier,0.13269496498141384,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,1,13,1,Raw ipTM,ece,0.19066399706450118,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,5,63,1,Raw ipTM,brier,0.13269496498141384,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,5,63,1,Raw ipTM,ece,0.19066399706450118,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,10,126,1,Raw ipTM,brier,0.13269496498141384,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,10,126,1,Raw ipTM,ece,0.19066399706450118,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,20,251,1,Raw ipTM,brier,0.13269496498141384,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,20,251,1,Raw ipTM,ece,0.19066399706450118,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,30,377,1,Raw ipTM,brier,0.13269496498141384,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,30,377,1,Raw ipTM,ece,0.19066399706450118,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,50,628,1,Raw ipTM,brier,0.13269496498141384,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,50,628,1,Raw ipTM,ece,0.19066399706450118,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,1,13,1,Isotonic ipTM (General),brier,0.08347755470620422,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,1,13,1,Isotonic ipTM (General),ece,0.020704374084051985,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,5,63,1,Isotonic ipTM (General),brier,0.08347755470620422,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,5,63,1,Isotonic ipTM (General),ece,0.020704374084051985,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,10,126,1,Isotonic ipTM (General),brier,0.08347755470620422,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,10,126,1,Isotonic ipTM (General),ece,0.020704374084051985,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,20,251,1,Isotonic ipTM (General),brier,0.08347755470620422,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,20,251,1,Isotonic ipTM (General),ece,0.020704374084051985,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,30,377,1,Isotonic ipTM (General),brier,0.08347755470620422,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,30,377,1,Isotonic ipTM (General),ece,0.020704374084051985,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,50,628,1,Isotonic ipTM (General),brier,0.08347755470620422,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,50,628,1,Isotonic ipTM (General),ece,0.020704374084051985,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,1,13,1,Raw ipSAEmax,brier,0.2885602737460307,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,1,13,1,Raw ipSAEmax,ece,0.3012699626840669,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,5,63,1,Raw ipSAEmax,brier,0.2885602737460307,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,5,63,1,Raw ipSAEmax,ece,0.3012699626840669,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,10,126,1,Raw ipSAEmax,brier,0.2885602737460307,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,10,126,1,Raw ipSAEmax,ece,0.3012699626840669,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,20,251,1,Raw ipSAEmax,brier,0.2885602737460307,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,20,251,1,Raw ipSAEmax,ece,0.3012699626840669,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,30,377,1,Raw ipSAEmax,brier,0.2885602737460307,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,30,377,1,Raw ipSAEmax,ece,0.3012699626840669,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,50,628,1,Raw ipSAEmax,brier,0.2885602737460307,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,50,628,1,Raw ipSAEmax,ece,0.3012699626840669,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+medium,0.49,1,13,100,Isotonic ipTM (Ab-Ag),brier,0.10233718352684514,0.012892656736702271,1244,paired target-grouped StratifiedShuffleSplit
+medium,0.49,1,13,100,Isotonic ipTM (Ab-Ag),ece,0.08208784619142834,0.028088932377896524,1244,paired target-grouped StratifiedShuffleSplit
+medium,0.49,1,13,100,Isotonic ipSAEmax (Ab-Ag),brier,0.20098716803498884,0.025426313950314826,1244,paired target-grouped StratifiedShuffleSplit
+medium,0.49,1,13,100,Isotonic ipSAEmax (Ab-Ag),ece,0.12000076037200269,0.06368131453502547,1244,paired target-grouped StratifiedShuffleSplit
+medium,0.49,5,63,100,Isotonic ipTM (Ab-Ag),brier,0.08972231440548165,0.004787205099341627,1194,paired target-grouped StratifiedShuffleSplit
+medium,0.49,5,63,100,Isotonic ipTM (Ab-Ag),ece,0.04432334580106936,0.01716331255644271,1194,paired target-grouped StratifiedShuffleSplit
+medium,0.49,5,63,100,Isotonic ipSAEmax (Ab-Ag),brier,0.1768782308683546,0.005548644768326971,1194,paired target-grouped StratifiedShuffleSplit
+medium,0.49,5,63,100,Isotonic ipSAEmax (Ab-Ag),ece,0.06055959261364007,0.02365923221943831,1194,paired target-grouped StratifiedShuffleSplit
+medium,0.49,10,126,100,Isotonic ipTM (Ab-Ag),brier,0.08605898778172442,0.00312534609547591,1131,paired target-grouped StratifiedShuffleSplit
+medium,0.49,10,126,100,Isotonic ipTM (Ab-Ag),ece,0.03241458254429596,0.011542100148998369,1131,paired target-grouped StratifiedShuffleSplit
+medium,0.49,10,126,100,Isotonic ipSAEmax (Ab-Ag),brier,0.17229064743473935,0.003803011806088996,1131,paired target-grouped StratifiedShuffleSplit
+medium,0.49,10,126,100,Isotonic ipSAEmax (Ab-Ag),ece,0.04454147821060825,0.017782879136354908,1131,paired target-grouped StratifiedShuffleSplit
+medium,0.49,20,251,100,Isotonic ipTM (Ab-Ag),brier,0.08460120332868519,0.0027629904242628964,1006,paired target-grouped StratifiedShuffleSplit
+medium,0.49,20,251,100,Isotonic ipTM (Ab-Ag),ece,0.02547181951097513,0.007723652163876344,1006,paired target-grouped StratifiedShuffleSplit
+medium,0.49,20,251,100,Isotonic ipSAEmax (Ab-Ag),brier,0.17062155941297746,0.0029380966701227913,1006,paired target-grouped StratifiedShuffleSplit
+medium,0.49,20,251,100,Isotonic ipSAEmax (Ab-Ag),ece,0.0392461252770229,0.013971620881527456,1006,paired target-grouped StratifiedShuffleSplit
+medium,0.49,30,377,100,Isotonic ipTM (Ab-Ag),brier,0.08328665270201027,0.003434000371668521,880,paired target-grouped StratifiedShuffleSplit
+medium,0.49,30,377,100,Isotonic ipTM (Ab-Ag),ece,0.024022105979713642,0.008160214759331463,880,paired target-grouped StratifiedShuffleSplit
+medium,0.49,30,377,100,Isotonic ipSAEmax (Ab-Ag),brier,0.16931299708879077,0.0031877014010118928,880,paired target-grouped StratifiedShuffleSplit
+medium,0.49,30,377,100,Isotonic ipSAEmax (Ab-Ag),ece,0.033038606576681,0.012161033406025954,880,paired target-grouped StratifiedShuffleSplit
+medium,0.49,50,628,100,Isotonic ipTM (Ab-Ag),brier,0.08334257391515919,0.004494875052223296,629,paired target-grouped StratifiedShuffleSplit
+medium,0.49,50,628,100,Isotonic ipTM (Ab-Ag),ece,0.02397365042850631,0.00677579171213911,629,paired target-grouped StratifiedShuffleSplit
+medium,0.49,50,628,100,Isotonic ipSAEmax (Ab-Ag),brier,0.16833845975343686,0.004277043909961029,629,paired target-grouped StratifiedShuffleSplit
+medium,0.49,50,628,100,Isotonic ipSAEmax (Ab-Ag),ece,0.03021297005689824,0.011643081569929376,629,paired target-grouped StratifiedShuffleSplit
+high,0.8,1,13,1,Raw ipTM,brier,0.20319001132719647,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,1,13,1,Raw ipTM,ece,0.333594071568737,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,5,63,1,Raw ipTM,brier,0.20319001132719647,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,5,63,1,Raw ipTM,ece,0.333594071568737,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,10,126,1,Raw ipTM,brier,0.20319001132719647,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,10,126,1,Raw ipTM,ece,0.333594071568737,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,20,251,1,Raw ipTM,brier,0.20319001132719647,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,20,251,1,Raw ipTM,ece,0.333594071568737,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,30,377,1,Raw ipTM,brier,0.20319001132719647,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,30,377,1,Raw ipTM,ece,0.333594071568737,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,50,628,1,Raw ipTM,brier,0.20319001132719647,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,50,628,1,Raw ipTM,ece,0.333594071568737,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,1,13,1,Isotonic ipTM (General),brier,0.07871847628523573,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,1,13,1,Isotonic ipTM (General),ece,0.04068415144663258,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,5,63,1,Isotonic ipTM (General),brier,0.07871847628523573,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,5,63,1,Isotonic ipTM (General),ece,0.04068415144663258,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,10,126,1,Isotonic ipTM (General),brier,0.07871847628523573,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,10,126,1,Isotonic ipTM (General),ece,0.04068415144663258,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,20,251,1,Isotonic ipTM (General),brier,0.07871847628523573,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,20,251,1,Isotonic ipTM (General),ece,0.04068415144663258,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,30,377,1,Isotonic ipTM (General),brier,0.07871847628523573,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,30,377,1,Isotonic ipTM (General),ece,0.04068415144663258,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,50,628,1,Isotonic ipTM (General),brier,0.07871847628523573,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,50,628,1,Isotonic ipTM (General),ece,0.04068415144663258,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,1,13,1,Raw ipSAEmax,brier,0.341063403593991,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,1,13,1,Raw ipSAEmax,ece,0.42045273089133867,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,5,63,1,Raw ipSAEmax,brier,0.341063403593991,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,5,63,1,Raw ipSAEmax,ece,0.42045273089133867,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,10,126,1,Raw ipSAEmax,brier,0.341063403593991,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,10,126,1,Raw ipSAEmax,ece,0.42045273089133867,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,20,251,1,Raw ipSAEmax,brier,0.341063403593991,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,20,251,1,Raw ipSAEmax,ece,0.42045273089133867,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,30,377,1,Raw ipSAEmax,brier,0.341063403593991,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,30,377,1,Raw ipSAEmax,ece,0.42045273089133867,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,50,628,1,Raw ipSAEmax,brier,0.341063403593991,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,50,628,1,Raw ipSAEmax,ece,0.42045273089133867,0.0,1257,fixed full Ab-Ag evaluation; no Ab-Ag labels used for fitting
+high,0.8,1,13,100,Isotonic ipTM (Ab-Ag),brier,0.09595987131286865,0.01880461543115695,1244,paired target-grouped StratifiedShuffleSplit
+high,0.8,1,13,100,Isotonic ipTM (Ab-Ag),ece,0.07464047872034137,0.034287799346802,1244,paired target-grouped StratifiedShuffleSplit
+high,0.8,1,13,100,Isotonic ipSAEmax (Ab-Ag),brier,0.12717841708352964,0.023897830817588225,1244,paired target-grouped StratifiedShuffleSplit
+high,0.8,1,13,100,Isotonic ipSAEmax (Ab-Ag),ece,0.09132617139768313,0.04269030467987338,1244,paired target-grouped StratifiedShuffleSplit
+high,0.8,5,63,100,Isotonic ipTM (Ab-Ag),brier,0.07954031875303472,0.005258138570808452,1194,paired target-grouped StratifiedShuffleSplit
+high,0.8,5,63,100,Isotonic ipTM (Ab-Ag),ece,0.038415811296415636,0.015648544646027066,1194,paired target-grouped StratifiedShuffleSplit
+high,0.8,5,63,100,Isotonic ipSAEmax (Ab-Ag),brier,0.10877691138019129,0.0058644380908250355,1194,paired target-grouped StratifiedShuffleSplit
+high,0.8,5,63,100,Isotonic ipSAEmax (Ab-Ag),ece,0.04592130119152329,0.02053990007209555,1194,paired target-grouped StratifiedShuffleSplit
+high,0.8,10,126,100,Isotonic ipTM (Ab-Ag),brier,0.07576374811207581,0.00336522823542573,1131,paired target-grouped StratifiedShuffleSplit
+high,0.8,10,126,100,Isotonic ipTM (Ab-Ag),ece,0.028808784111916053,0.012164645355690416,1131,paired target-grouped StratifiedShuffleSplit
+high,0.8,10,126,100,Isotonic ipSAEmax (Ab-Ag),brier,0.10533443009666979,0.0033401793836621463,1131,paired target-grouped StratifiedShuffleSplit
+high,0.8,10,126,100,Isotonic ipSAEmax (Ab-Ag),ece,0.03591343141550276,0.014039949286816483,1131,paired target-grouped StratifiedShuffleSplit
+high,0.8,20,251,100,Isotonic ipTM (Ab-Ag),brier,0.0734501310129646,0.0026789622422405553,1006,paired target-grouped StratifiedShuffleSplit
+high,0.8,20,251,100,Isotonic ipTM (Ab-Ag),ece,0.021369303501145506,0.008436120154482385,1006,paired target-grouped StratifiedShuffleSplit
+high,0.8,20,251,100,Isotonic ipSAEmax (Ab-Ag),brier,0.10287173804227528,0.00271065497063535,1006,paired target-grouped StratifiedShuffleSplit
+high,0.8,20,251,100,Isotonic ipSAEmax (Ab-Ag),ece,0.026979459118378523,0.011534371269672865,1006,paired target-grouped StratifiedShuffleSplit
+high,0.8,30,377,100,Isotonic ipTM (Ab-Ag),brier,0.07281749619893263,0.0027597622465910876,880,paired target-grouped StratifiedShuffleSplit
+high,0.8,30,377,100,Isotonic ipTM (Ab-Ag),ece,0.021028035302226945,0.006524894480306611,880,paired target-grouped StratifiedShuffleSplit
+high,0.8,30,377,100,Isotonic ipSAEmax (Ab-Ag),brier,0.10241915575366102,0.00311617984145648,880,paired target-grouped StratifiedShuffleSplit
+high,0.8,30,377,100,Isotonic ipSAEmax (Ab-Ag),ece,0.023797700162858842,0.008164977288042205,880,paired target-grouped StratifiedShuffleSplit
+high,0.8,50,628,100,Isotonic ipTM (Ab-Ag),brier,0.0725469369559909,0.003291312535032033,629,paired target-grouped StratifiedShuffleSplit
+high,0.8,50,628,100,Isotonic ipTM (Ab-Ag),ece,0.01849046536954107,0.006087678292475226,629,paired target-grouped StratifiedShuffleSplit
+high,0.8,50,628,100,Isotonic ipSAEmax (Ab-Ag),brier,0.10172088357211898,0.003684366993898316,629,paired target-grouped StratifiedShuffleSplit
+high,0.8,50,628,100,Isotonic ipSAEmax (Ab-Ag),ece,0.022454656925180227,0.007911090474510007,629,paired target-grouped StratifiedShuffleSplit
