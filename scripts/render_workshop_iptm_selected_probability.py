@@ -113,7 +113,7 @@ def main() -> None:
             ax.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
             ax.grid(True, alpha=0.15, linewidth=0.8)
             if col == 0:
-                ax.set_ylabel("Observed / predicted\nsuccess fraction")
+                ax.set_ylabel("Success fraction")
             if row == 1:
                 ax.set_xlabel("Raw ipTM selection cutoff $c$")
 
