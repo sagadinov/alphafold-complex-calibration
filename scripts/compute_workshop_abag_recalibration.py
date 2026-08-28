@@ -315,6 +315,6 @@ def render(source: pd.DataFrame, output_name: str, x_label: str) -> None:
 
 if __name__ == "__main__":
     target_grouped = compute()
-    render(target_grouped, "F3_workshop_abag_recalibration_candidate", "[%] of unique complexes used")
+    render(target_grouped, "F3_workshop_abag_recalibration_candidate", "[%] unique complexes used")
     model_random = compute_model_random()
     render(model_random, "F3_workshop_abag_recalibration_model_random_candidate", "[%] samples used")
