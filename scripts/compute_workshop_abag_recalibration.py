@@ -317,4 +317,4 @@ if __name__ == "__main__":
     target_grouped = compute()
     render(target_grouped, "F3_workshop_abag_recalibration_candidate", "[%] of unique complexes used")
     model_random = compute_model_random()
-    render(model_random, "F3_workshop_abag_recalibration_model_random_candidate", "[%] of randomly sampled models used")
+    render(model_random, "F3_workshop_abag_recalibration_model_random_candidate", "[%] samples used")
