@@ -3,6 +3,8 @@
 
 from pathlib import Path
 
+import argparse
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -72,6 +74,13 @@ def compute_dataset(dataset: str, path: Path, refit_column: str, refit_label: st
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--hide-general-refit",
+        action="store_true",
+        help="Render a comparison with the pDockQ2 refit shown only for Ab-Ag.",
+    )
+    args = parser.parse_args()
     plt.rcParams.update({
         "font.size": 16, "axes.labelsize": 18, "axes.titlesize": 19,
         "xtick.labelsize": 15, "ytick.labelsize": 15, "legend.fontsize": 16,
@@ -80,7 +89,10 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     SOURCE_OUT.mkdir(parents=True, exist_ok=True)
     table = pd.concat([compute_dataset(*spec) for spec in DATASETS], ignore_index=True)
-    table.to_csv(SOURCE_OUT / "F7_workshop_iptm_selected_probability.csv", index=False)
+    suffix = "_abag_refit_only" if args.hide_general_refit else ""
+    if args.hide_general_refit:
+        table.loc[table["dataset"].eq("General"), "predicted_pDockQ2 (refit)"] = np.nan
+    table.to_csv(SOURCE_OUT / f"F7_workshop_iptm_selected_probability{suffix}.csv", index=False)
 
     fig, axes = plt.subplots(2, 3, figsize=(16.4, 9.0), sharex=True, sharey=True)
     handles = []
@@ -123,8 +135,8 @@ def main() -> None:
                frameon=False, bbox_to_anchor=(0.53, 1.01), columnspacing=1.4, handletextpad=0.5)
     fig.tight_layout(rect=(0.035, 0.0, 1.0, 0.94), h_pad=2.2, w_pad=1.5)
     metadata = {"Creator": "alphafold-complex-calibration"}
-    fig.savefig(OUT / "F7_workshop_iptm_selected_probability.pdf", bbox_inches="tight", metadata=metadata)
-    fig.savefig(OUT / "F7_workshop_iptm_selected_probability.png", bbox_inches="tight", dpi=300)
+    fig.savefig(OUT / f"F7_workshop_iptm_selected_probability{suffix}.pdf", bbox_inches="tight", metadata=metadata)
+    fig.savefig(OUT / f"F7_workshop_iptm_selected_probability{suffix}.png", bbox_inches="tight", dpi=300)
     plt.close(fig)
 
 
