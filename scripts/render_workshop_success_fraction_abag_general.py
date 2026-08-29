@@ -62,10 +62,9 @@ def rows_from_yield_table(table: pd.DataFrame, dataset: str, methods: dict[str, 
 def build_source() -> pd.DataFrame:
     abag = pd.read_csv(ANALYSIS / "workshop_yield_with_refit.csv")
     general = pd.read_csv(ANALYSIS / "workshop" / "workshop_yield_simplified.csv")
+    audited_metrics = pd.read_csv(ANALYSIS / "decision_use" / "fixed_ranking_yield_metrics.csv")
     abag_methods = {
         "Observed": "observed",
-        "Raw ipTM": "raw_iptm",
-        "Isotonic ipTM": "iso_iptm",
         "pDockQ2 (published)": "pdockq2",
         "pDockQ2 (Ab-Ag refit)": "pdockq2_refit",
     }
@@ -75,10 +74,36 @@ def build_source() -> pd.DataFrame:
         "Isotonic ipTM": "iso_iptm",
         "pDockQ2 (published)": "pdockq2",
     }
-    return pd.DataFrame(
+    rows = (
         rows_from_yield_table(abag, "abag", abag_methods)
         + rows_from_yield_table(general, "general", general_methods)
     )
+    # The refit worksheet omitted raw and isotonic values at K=50. Recover all
+    # their K values from the frozen fixed-ranking audit, which is also the
+    # source used for the previous candidate version.
+    audited = audited_metrics.loc[
+        (audited_metrics["dataset"] == "abag")
+        & (audited_metrics["ranking_family"] == "iptm")
+        & (audited_metrics["selection_score"] == "p_raw_iptm")
+        & (audited_metrics["comparison_universe"] == "three_method_common")
+        & (audited_metrics["probability_method"].isin(["Raw ipTM", "Isotonic ipTM"]))
+        & (audited_metrics["K"].isin(K_VALUES))
+    ]
+    for _, record in audited.iterrows():
+        rows.append(
+            {
+                "dataset": "abag",
+                "dataset_label": "Ab-Ag",
+                "threshold": record["dockq_threshold_name"],
+                "threshold_val": float(record["dockq_threshold"]),
+                "method": record["probability_method"],
+                "K": int(record["K"]),
+                "value_fraction": float(record["mean_predicted_hits"] / record["K"]),
+                "n_targets": int(record["n_targets"]),
+                "n_models": np.nan,
+            }
+        )
+    return pd.DataFrame(rows)
 
 
 def render(source: pd.DataFrame) -> None:
