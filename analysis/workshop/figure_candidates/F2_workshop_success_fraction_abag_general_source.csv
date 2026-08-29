@@ -1,0 +1,73 @@
+dataset,dataset_label,threshold,threshold_val,method,K,value_fraction,n_targets,n_models
+abag,Ab-Ag,acceptable,0.23,Observed,5,0.411296738265712,1257,6285
+abag,Ab-Ag,acceptable,0.23,Raw ipTM,5,0.5483436754176612,1257,6285
+abag,Ab-Ag,acceptable,0.23,Isotonic ipTM,5,0.4389009048406267,1257,6285
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (published),5,0.2104701067506595,1257,6285
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (Ab-Ag refit),5,0.3421684580998529,1257,6285
+abag,Ab-Ag,acceptable,0.23,Observed,10,0.4031821797931583,1257,12570
+abag,Ab-Ag,acceptable,0.23,Raw ipTM,10,0.5341972951471758,1257,12570
+abag,Ab-Ag,acceptable,0.23,Isotonic ipTM,10,0.4228370479107938,1257,12570
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (published),10,0.2013821854262804,1257,12570
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (Ab-Ag refit),10,0.3293337670774776,1257,12570
+abag,Ab-Ag,acceptable,0.23,Observed,20,0.3890612569610183,1257,25140
+abag,Ab-Ag,acceptable,0.23,Raw ipTM,20,0.516178599840891,1257,25140
+abag,Ab-Ag,acceptable,0.23,Isotonic ipTM,20,0.4023633743971569,1257,25140
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (published),20,0.1880213849172622,1257,25140
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (Ab-Ag refit),20,0.3115280550811887,1257,25140
+abag,Ab-Ag,medium,0.49,Observed,5,0.3481304693715195,1257,6285
+abag,Ab-Ag,medium,0.49,Raw ipTM,5,0.5483436754176612,1257,6285
+abag,Ab-Ag,medium,0.49,Isotonic ipTM,5,0.3540571323501246,1257,6285
+abag,Ab-Ag,medium,0.49,pDockQ2 (published),5,0.2104701067506595,1257,6285
+abag,Ab-Ag,medium,0.49,pDockQ2 (Ab-Ag refit),5,0.3421684580998529,1257,6285
+abag,Ab-Ag,medium,0.49,Observed,10,0.3391408114558472,1257,12570
+abag,Ab-Ag,medium,0.49,Raw ipTM,10,0.5341972951471758,1257,12570
+abag,Ab-Ag,medium,0.49,Isotonic ipTM,10,0.3393810334719735,1257,12570
+abag,Ab-Ag,medium,0.49,pDockQ2 (published),10,0.2013821854262804,1257,12570
+abag,Ab-Ag,medium,0.49,pDockQ2 (Ab-Ag refit),10,0.3293337670774776,1257,12570
+abag,Ab-Ag,medium,0.49,Observed,20,0.3231901352426412,1257,25140
+abag,Ab-Ag,medium,0.49,Raw ipTM,20,0.516178599840891,1257,25140
+abag,Ab-Ag,medium,0.49,Isotonic ipTM,20,0.3208524702280988,1257,25140
+abag,Ab-Ag,medium,0.49,pDockQ2 (published),20,0.1880213849172622,1257,25140
+abag,Ab-Ag,medium,0.49,pDockQ2 (Ab-Ag refit),20,0.3115280550811887,1257,25140
+abag,Ab-Ag,high,0.8,Observed,5,0.1789976133651551,1257,6285
+abag,Ab-Ag,high,0.8,Raw ipTM,5,0.5483436754176612,1257,6285
+abag,Ab-Ag,high,0.8,Isotonic ipTM,5,0.195091334688184,1257,6285
+abag,Ab-Ag,high,0.8,pDockQ2 (published),5,0.2104701067506595,1257,6285
+abag,Ab-Ag,high,0.8,pDockQ2 (Ab-Ag refit),5,0.3421684580998529,1257,6285
+abag,Ab-Ag,high,0.8,Observed,10,0.173587907716786,1257,12570
+abag,Ab-Ag,high,0.8,Raw ipTM,10,0.5341972951471758,1257,12570
+abag,Ab-Ag,high,0.8,Isotonic ipTM,10,0.1851420630518103,1257,12570
+abag,Ab-Ag,high,0.8,pDockQ2 (published),10,0.2013821854262804,1257,12570
+abag,Ab-Ag,high,0.8,pDockQ2 (Ab-Ag refit),10,0.3293337670774776,1257,12570
+abag,Ab-Ag,high,0.8,Observed,20,0.1647573587907716,1257,25140
+abag,Ab-Ag,high,0.8,Raw ipTM,20,0.516178599840891,1257,25140
+abag,Ab-Ag,high,0.8,Isotonic ipTM,20,0.1728671735867781,1257,25140
+abag,Ab-Ag,high,0.8,pDockQ2 (published),20,0.1880213849172622,1257,25140
+abag,Ab-Ag,high,0.8,pDockQ2 (Ab-Ag refit),20,0.3115280550811887,1257,25140
+abag,Ab-Ag,acceptable,0.23,Observed,50,0.3780673758865248,1128,56400
+abag,Ab-Ag,acceptable,0.23,Raw ipTM,50,,1128,56400
+abag,Ab-Ag,acceptable,0.23,Isotonic ipTM,50,,1128,56400
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (published),50,0.1734074734471717,1128,56400
+abag,Ab-Ag,acceptable,0.23,pDockQ2 (Ab-Ag refit),50,0.2913086724698036,1128,56400
+abag,Ab-Ag,medium,0.49,Observed,50,0.3092198581560283,1128,56400
+abag,Ab-Ag,medium,0.49,Raw ipTM,50,,1128,56400
+abag,Ab-Ag,medium,0.49,Isotonic ipTM,50,,1128,56400
+abag,Ab-Ag,medium,0.49,pDockQ2 (published),50,0.1734074734471717,1128,56400
+abag,Ab-Ag,medium,0.49,pDockQ2 (Ab-Ag refit),50,0.2913086724698036,1128,56400
+abag,Ab-Ag,high,0.8,Observed,50,0.1577659574468085,1128,56400
+abag,Ab-Ag,high,0.8,Raw ipTM,50,,1128,56400
+abag,Ab-Ag,high,0.8,Isotonic ipTM,50,,1128,56400
+abag,Ab-Ag,high,0.8,pDockQ2 (published),50,0.1734074734471717,1128,56400
+abag,Ab-Ag,high,0.8,pDockQ2 (Ab-Ag refit),50,0.2913086724698036,1128,56400
+general,General,acceptable,0.23,Observed,5,0.4984455958549223,193,965
+general,General,acceptable,0.23,Raw ipTM,5,0.5393316062176167,193,965
+general,General,acceptable,0.23,Isotonic ipTM,5,0.4709428628895016,193,965
+general,General,acceptable,0.23,pDockQ2 (published),5,0.3137421792796791,193,965
+general,General,medium,0.49,Observed,5,0.3492227979274611,193,965
+general,General,medium,0.49,Raw ipTM,5,0.5393316062176167,193,965
+general,General,medium,0.49,Isotonic ipTM,5,0.3169116256768714,193,965
+general,General,medium,0.49,pDockQ2 (published),5,0.3137421792796791,193,965
+general,General,high,0.8,Observed,5,0.160621761658031,193,965
+general,General,high,0.8,Raw ipTM,5,0.5393316062176167,193,965
+general,General,high,0.8,Isotonic ipTM,5,0.1360392029253627,193,965
+general,General,high,0.8,pDockQ2 (published),5,0.3137421792796791,193,965
