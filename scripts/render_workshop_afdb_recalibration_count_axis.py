@@ -33,8 +33,9 @@ LABEL = {
 def main() -> None:
     source = pd.read_csv(SOURCE)
     source = source.loc[source["train_size"].isin(DISPLAY_SIZES)].copy()
-    plt.rcParams.update({"font.size": 13, "axes.labelsize": 14, "axes.titlesize": 15,
-                         "legend.fontsize": 12, "xtick.labelsize": 12, "ytick.labelsize": 12})
+    # Match the approved Figure 1 v2 manuscript typography.
+    plt.rcParams.update({"font.size": 17, "axes.labelsize": 18, "axes.titlesize": 19,
+                         "legend.fontsize": 17, "xtick.labelsize": 16, "ytick.labelsize": 16})
     fig, axes = plt.subplots(2, 3, figsize=(14, 8), sharex=True)
     for col, (threshold, threshold_value) in enumerate(THRESHOLDS):
         for row, metric in enumerate(["brier", "ece"]):

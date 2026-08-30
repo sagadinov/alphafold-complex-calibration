@@ -107,8 +107,9 @@ def build_source() -> pd.DataFrame:
 
 
 def render(source: pd.DataFrame) -> None:
-    plt.rcParams.update({"font.size": 13, "axes.labelsize": 15, "axes.titlesize": 16,
-                         "legend.fontsize": 13, "xtick.labelsize": 13, "ytick.labelsize": 13})
+    # Match the approved Figure 1 v2 manuscript typography.
+    plt.rcParams.update({"font.size": 17, "axes.labelsize": 18, "axes.titlesize": 19,
+                         "legend.fontsize": 17, "xtick.labelsize": 16, "ytick.labelsize": 16})
     fig, axes = plt.subplots(2, 3, figsize=(14.8, 8.4), sharey=True)
     for row_index, dataset in enumerate(["abag", "general"]):
         methods = ABAG_METHODS if dataset == "abag" else GENERAL_METHODS
@@ -134,9 +135,9 @@ def render(source: pd.DataFrame) -> None:
             ax.grid(axis="y", alpha=0.16)
             if col_index == 0:
                 ax.set_ylabel("Fraction of success")
-    fig.text(0.012, 0.72, "Ab-Ag", rotation=90, va="center", ha="center", fontsize=17,
+    fig.text(0.012, 0.72, "Ab-Ag", rotation=90, va="center", ha="center", fontsize=19,
              color="#4B5563", fontweight="bold")
-    fig.text(0.012, 0.28, "General", rotation=90, va="center", ha="center", fontsize=17,
+    fig.text(0.012, 0.28, "General", rotation=90, va="center", ha="center", fontsize=19,
              color="#4B5563", fontweight="bold")
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=5, frameon=False, bbox_to_anchor=(0.5, 1.02))

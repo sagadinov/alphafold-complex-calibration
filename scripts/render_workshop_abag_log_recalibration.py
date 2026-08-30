@@ -25,8 +25,9 @@ def main() -> None:
     if set(source["method"]) != expected:
         raise RuntimeError("Unexpected source methods after excluding General isotonic reference.")
 
-    plt.rcParams.update({"font.size": 13, "axes.labelsize": 14, "axes.titlesize": 15,
-                         "legend.fontsize": 12, "xtick.labelsize": 12, "ytick.labelsize": 12})
+    # Match the approved Figure 1 v2 manuscript typography.
+    plt.rcParams.update({"font.size": 17, "axes.labelsize": 18, "axes.titlesize": 19,
+                         "legend.fontsize": 17, "xtick.labelsize": 16, "ytick.labelsize": 16})
     fig, axes = plt.subplots(2, 3, figsize=(14, 8), sharex=True)
     for col, (threshold, value) in enumerate(THRESHOLDS):
         for row, metric in enumerate(["brier", "ece"]):
@@ -43,14 +44,16 @@ def main() -> None:
                             linewidth=2.5, label=LABELS[method])
             ax.set_xscale("log")
             ax.set_xlim(40, 12000)
-            ax.set_xticks([50, 100, 200, 500, 1000, 10000])
-            ax.set_xticklabels(["50", "100", "200", "500", "1,000", "10,000"])
+            # Keep all six fitted points, but label a sparse log-scale subset
+            # so Figure 1 v2-sized type remains readable at manuscript scale.
+            ax.set_xticks([50, 100, 500, 10000])
+            ax.set_xticklabels(["50", "100", "500", "10k"])
             ax.set_title(f"DockQ >= {value:.2f}")
             ax.grid(alpha=0.15)
             if col == 0:
                 ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)")
             if row == 1:
-                ax.set_xlabel("Number of Ab-Ag training samples")
+                ax.set_xlabel("Number of samples")
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 1.01))
     fig.tight_layout(rect=(0, 0, 1, 0.94))
