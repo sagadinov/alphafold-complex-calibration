@@ -56,7 +56,7 @@ def main() -> None:
             if col == 0:
                 ax.set_ylabel("Brier score" if metric == "brier" else "ECE (10 bins)")
             if row == 1:
-                ax.set_xlabel("Number of AFDB calibration samples")
+                ax.set_xlabel("Number of samples")
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 1.03))
     fig.tight_layout(rect=(0, 0, 1, 0.94))
